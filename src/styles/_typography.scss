@@ -1,0 +1,71 @@
+h1 {
+  font-weight: bold;
+  font-size: $h1-size;
+  line-height: $h1-line-height;
+  letter-spacing: $h1-letter-spacing;
+
+  @include mobile {
+    font-size: $h1-size-mobile;
+    line-height: $h1-line-height-mobile;
+  }
+}
+
+h2 {
+  font-weight: bold;
+  font-size: $h2-size;
+  line-height: $h2-line-height;
+  letter-spacing: $h2-letter-spacing;
+
+  @include mobile {
+    font-size: $h2-size-mobile;
+    line-height: $h2-line-height-mobile;
+  }
+}
+
+h3 {
+  font-weight: 600;
+  font-size: $h3-size;
+  line-height: $h3-line-height;
+
+  @include mobile {
+    font-size: $h3-size-mobile;
+    line-height: $h3-line-height-mobile;
+  }
+}
+
+h4 {
+  font-weight: 600;
+  font-size: $h4-size;
+  line-height: $h4-line-height;
+
+  @include mobile {
+    font-size: $h4-size-mobile;
+    line-height: $h4-line-height-mobile;
+  }
+}
+
+.uppercase {
+  font-weight: bold;
+  font-size: $uppercase-size;
+  line-height: $uppercase-line-height;
+  letter-spacing: $uppercase-spacing;
+  text-transform: uppercase;
+}
+
+.button-text {
+  font-weight: 600;
+  font-size: $button-text-size;
+  line-height: $button-text-line-height;
+}
+
+.body-text {
+  font-weight: 400;
+  font-size: $body-text-size;
+  line-height: $body-text-line-height;
+}
+
+.small-text {
+  font-weight: 600;
+  font-size: $small-text-size;
+  line-height: $small-text-line-height;
+}
