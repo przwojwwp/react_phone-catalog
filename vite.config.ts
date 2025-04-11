@@ -12,6 +12,7 @@ export default defineConfig({
         @import "src/styles/variables";
         @import "src/styles/mixins";
         @import "src/styles/grid";
+        @import "src/styles/typography";
         `,
       },
     },

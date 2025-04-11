@@ -16,10 +16,5 @@
 }
 
 .navItem {
-  font-family: Mont;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 4%;
-  text-transform: uppercase;
+  @include uppercase;
 }
