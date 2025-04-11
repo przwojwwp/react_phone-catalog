@@ -1,9 +1,8 @@
 .HeaderActions {
   display: flex;
-  padding: 0;
-  margin: 0;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
 }
 
 .icon {
@@ -14,6 +13,16 @@
   justify-content: center;
 
   box-shadow: -1px 0px 0px 0px #e2e6e9;
+
+  @include tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include mobile {
+    width: 48px;
+    height: 48px;
+  }
 
   svg {
     width: 16px;

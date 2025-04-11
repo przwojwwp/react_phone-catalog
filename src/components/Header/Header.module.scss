@@ -10,5 +10,7 @@
     height: 48px;
   }
 
-
+  @include mobile {
+    height: 48px;
+  }
 }
