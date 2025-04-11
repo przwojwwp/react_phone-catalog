@@ -2,9 +2,12 @@ import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { HashRouter as Router } from 'react-router-dom';
 import './styles/main.scss';
+import { MobileMenuProvider } from './context/MobileMenuContext/MobileMenuContext';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <Router>
-    <App />
-  </Router>,
+  <MobileMenuProvider>
+    <Router>
+      <App />
+    </Router>
+  </MobileMenuProvider>,
 );

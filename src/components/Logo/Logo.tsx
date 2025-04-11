@@ -5,7 +5,7 @@ import styles from './Logo.module.scss';
 export const Logo = () => {
   return (
     <NavLink to="/home" className={styles.wrapper}>
-      <LogoIcon className={styles.image} />
+      <LogoIcon className={styles.logo} />
     </NavLink>
   );
 };
