@@ -1,0 +1,25 @@
+.nav {
+  display: flex;
+  width: 425px;
+  gap: 64px;
+
+  a {
+    text-decoration: none;
+    color: $color-secondary;
+    font-weight: 600;
+
+    &.active {
+      color: $color-primary;
+      border-bottom: 2px solid $color-primary;
+    }
+  }
+}
+
+.navItem {
+  font-family: Mont;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+}
