@@ -13,7 +13,7 @@ export const HeaderActions = () => {
   return (
     <div className={style['header-actions']}>
       {isMobile ? (
-        <button className={style['menu-button']} onClick={open}>
+        <button className={style['burger-menu-button']} onClick={open}>
           <BurgerIcon />
         </button>
       ) : (
