@@ -13,7 +13,7 @@ export const MobileMenu = () => {
         <NavLink to="/home" className={style.logo}>
           <Logo />
         </NavLink>
-        <button onClick={close}>
+        <button className={style.icon} onClick={close}>
           <CloseIcon />
         </button>
       </div>
