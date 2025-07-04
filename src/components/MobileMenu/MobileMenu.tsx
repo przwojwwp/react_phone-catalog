@@ -32,7 +32,10 @@ export const MobileMenu = () => {
           Accessories
         </NavLink>
       </div>
-      <div className={style['menu-actions']}></div>
+      <div className={style['menu-actions']}>
+        <NavLink to="/favourites" className=""></NavLink>
+        <NavLink to="/cart" className=""></NavLink>
+      </div>
     </div>
   );
 };
