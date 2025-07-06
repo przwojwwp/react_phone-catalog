@@ -9,16 +9,16 @@ export const Navigation = () => {
 
   return (
     <nav className={styles.nav}>
-      <NavLink to="/home" className={styles.navItem}>
+      <NavLink to="/home" className={styles['nav-item']}>
         Home
       </NavLink>
-      <NavLink to="/phones" className={styles.navItem}>
+      <NavLink to="/phones" className={styles['nav-item']}>
         Phones
       </NavLink>
-      <NavLink to="/tablets" className={styles.navItem}>
+      <NavLink to="/tablets" className={styles['nav-item']}>
         Tablets
       </NavLink>
-      <NavLink to="/accessories" className={styles.navItem}>
+      <NavLink to="/accessories" className={styles['nav-item']}>
         Accessories
       </NavLink>
     </nav>
