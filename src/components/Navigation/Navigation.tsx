@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import { useIsMobile } from '../../hooks/useIsMobile';
+import { NavLinks } from '../NavLinks/NavLinks';
 
 export const Navigation = () => {
   const isMobile = useIsMobile();
@@ -9,18 +9,7 @@ export const Navigation = () => {
 
   return (
     <nav className={styles.nav}>
-      <NavLink to="/home" className={styles['nav-item']}>
-        Home
-      </NavLink>
-      <NavLink to="/phones" className={styles['nav-item']}>
-        Phones
-      </NavLink>
-      <NavLink to="/tablets" className={styles['nav-item']}>
-        Tablets
-      </NavLink>
-      <NavLink to="/accessories" className={styles['nav-item']}>
-        Accessories
-      </NavLink>
+      <NavLinks className={styles['nav-item']} />
     </nav>
   );
 };

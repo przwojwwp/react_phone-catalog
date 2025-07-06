@@ -1,38 +1,28 @@
 import { NavLink } from 'react-router-dom';
-import style from './MobileMenu.module.scss';
+import styles from './MobileMenu.module.scss';
 import { Logo } from '../Logo';
 import CloseIcon from '../../assets/icons/close.svg?react';
 import { useMobileMenu } from '../../context/MobileMenuContext/MobileMenuContext';
+import { NavLinks } from '../NavLinks/NavLinks';
 
 export const MobileMenu = () => {
   const { isOpen, close } = useMobileMenu();
 
   return (
-    <div className={`${style.menu} ${isOpen ? style.open : ''}`}>
-      <div className={style.header}>
-        <NavLink to="/home" className={style.logo}>
+    <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
+      <div className={styles.header}>
+        <NavLink to="/home" className={styles.logo}>
           <Logo />
         </NavLink>
-        <button className={style.icon} onClick={close}>
+        <button className={styles.icon} onClick={close}>
           <CloseIcon />
         </button>
       </div>
 
-      <div className={style['mobile-navigation']}>
-        <NavLink to="/home" className={style['nav-item']}>
-          Home
-        </NavLink>
-        <NavLink to="/phones" className={style['nav-item']}>
-          Phones
-        </NavLink>
-        <NavLink to="/tablets" className={style['nav-item']}>
-          Tablets
-        </NavLink>
-        <NavLink to="/accessories" className={style['nav-item']}>
-          Accessories
-        </NavLink>
+      <div className={styles['mobile-navigation']}>
+        <NavLinks className={styles['nav-item']} />
       </div>
-      <div className={style['menu-actions']}>
+      <div className={styles['menu-actions']}>
         <NavLink to="/favourites" className=""></NavLink>
         <NavLink to="/cart" className=""></NavLink>
       </div>
