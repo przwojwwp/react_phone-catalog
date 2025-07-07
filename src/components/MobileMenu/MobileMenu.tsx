@@ -11,9 +11,7 @@ export const MobileMenu = () => {
   return (
     <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
       <div className={styles.header}>
-        <NavLink to="/home" className={styles.logo}>
-          <Logo />
-        </NavLink>
+        <Logo />
         <button className={styles.icon} onClick={close}>
           <CloseIcon />
         </button>
