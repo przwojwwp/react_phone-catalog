@@ -13,6 +13,15 @@ export const MobileMenu = () => {
 
   useEffect(() => {
     if (!isMobile && isOpen) close();
+
+    if (isOpen) {
+      document.body.classList.add('no-scroll');
+      console.log(isOpen);
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
   }, [isMobile, isOpen]);
 
   return (
