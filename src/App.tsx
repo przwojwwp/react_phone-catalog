@@ -1,7 +1,8 @@
-import { Header } from './components/Header';
+import { Header } from './modules/shared/components/Header';
+import { MobileMenu } from './modules/shared/components/MobileMenu';
+import { useMobileMenu } from './modules/shared/context/MobileMenuContext';
+
 import './App.scss';
-import { MobileMenu } from './components/MobileMenu';
-import { useMobileMenu } from './context/MobileMenuContext/MobileMenuContext';
 
 export const App = () => {
   const { isOpen } = useMobileMenu();

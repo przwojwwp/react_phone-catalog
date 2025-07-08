@@ -1,11 +1,12 @@
-import styles from './MobileMenu.module.scss';
 import { Logo } from '../Logo';
-import CloseIcon from '../../assets/icons/close.svg?react';
+import CloseIcon from '../../../../assets/icons/close.svg?react';
 import { useMobileMenu } from '../../context/MobileMenuContext';
 import { NavLinks } from '../NavLinks/NavLinks';
 import { UtilityIcons } from '../UtilityIcons';
 import { useIsMobile } from '../../hooks/useIsMobile';
 import { useEffect } from 'react';
+
+import styles from './MobileMenu.module.scss';
 
 export const MobileMenu = () => {
   const { isOpen, close } = useMobileMenu();

@@ -1,8 +1,9 @@
-import styles from './HeaderActions.module.scss';
-import BurgerIcon from '../../assets/icons/burger-menu.svg?react';
+import BurgerIcon from '../../../../assets/icons/burger-menu.svg';
 import { useIsMobile } from '../../hooks/useIsMobile';
 import { useMobileMenu } from '../../context/MobileMenuContext';
 import { UtilityIcons } from '../UtilityIcons';
+
+import styles from './HeaderActions.module.scss';
 
 export const HeaderActions = () => {
   const isMobile = useIsMobile();
