@@ -1,9 +1,9 @@
 import styles from './MobileMenu.module.scss';
 import { Logo } from '../Logo';
 import CloseIcon from '../../assets/icons/close.svg?react';
-import { useMobileMenu } from '../../context/MobileMenuContext/MobileMenuContext';
+import { useMobileMenu } from '../../context/MobileMenuContext';
 import { NavLinks } from '../NavLinks/NavLinks';
-import { UtilityIcons } from '../UtilityIcons/UtilityIcons';
+import { UtilityIcons } from '../UtilityIcons';
 import { useIsMobile } from '../../hooks/useIsMobile';
 import { useEffect } from 'react';
 
@@ -16,7 +16,6 @@ export const MobileMenu = () => {
 
     if (isOpen) {
       document.body.classList.add('no-scroll');
-      console.log(isOpen);
     }
 
     return () => {

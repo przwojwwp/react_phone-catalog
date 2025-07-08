@@ -1,9 +1,11 @@
 .header {
-  background-color: $color-white;
-  box-shadow: 0px 1px 0px 0px $color-elements;
-  height: 64px;
   display: flex;
   align-items: center;
+  position: fixed;
+  height: 64px;
+  width: 100%;
+  background-color: $color-white;
+  box-shadow: 0px 1px 0px 0px $color-elements;
   gap: 24px;
 
   @include tablet {
