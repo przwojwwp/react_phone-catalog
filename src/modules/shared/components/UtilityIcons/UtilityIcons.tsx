@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import HeartIcon from '../../../../assets/icons/heart.svg?react';
-import CartIcon from '../../../../assets/icons/cart.svg?react';
+import HeartIcon from '@/assets/icons/heart.svg?react';
+import CartIcon from '@/assets/icons/cart.svg?react';
 
 interface Props {
   className?: string;

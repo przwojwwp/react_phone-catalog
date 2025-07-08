@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import LogoPink from '../../../../assets/logo/logo-pink.svg?react';
-import LogoBlack from '../../../../assets/logo/logo-black.svg?react';
+import LogoPink from '@/assets/logo/logo-pink.svg?react';
+import LogoBlack from '@/assets/logo/logo-black.svg?react';
 import { useMobileMenu } from '../../context/MobileMenuContext';
 
 import styles from './Logo.module.scss';

@@ -1,1 +1,1 @@
-export { UtilityIcons } from './UtilityIcons';
+export * from './UtilityIcons';

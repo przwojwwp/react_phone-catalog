@@ -1,5 +1,5 @@
 import { Logo } from '../Logo';
-import CloseIcon from '../../../../assets/icons/close.svg?react';
+import CloseIcon from '@/assets/icons/close.svg?react';
 import { useMobileMenu } from '../../context/MobileMenuContext';
 import { NavLinks } from '../NavLinks/NavLinks';
 import { UtilityIcons } from '../UtilityIcons';
