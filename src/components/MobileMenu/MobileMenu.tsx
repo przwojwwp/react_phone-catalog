@@ -19,7 +19,7 @@ export const MobileMenu = () => {
     <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
       <div className={styles.header}>
         <Logo />
-        <button className={styles['icon-close']} onClick={close}>
+        <button className={styles['close-icon']} onClick={close}>
           <CloseIcon />
         </button>
       </div>
@@ -28,7 +28,7 @@ export const MobileMenu = () => {
         <NavLinks className={styles['nav-item']} />
       </div>
       <div className={styles['menu-actions']}>
-        <UtilityIcons className={styles.icon} />
+        <UtilityIcons className={styles['utility-icon']} />
       </div>
     </div>
   );
