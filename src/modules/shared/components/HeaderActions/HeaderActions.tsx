@@ -1,4 +1,4 @@
-import BurgerIcon from '../../../../assets/icons/burger-menu.svg';
+import BurgerIcon from '../../../../assets/icons/burger-menu.svg?react';
 import { useIsMobile } from '../../hooks/useIsMobile';
 import { useMobileMenu } from '../../context/MobileMenuContext';
 import { UtilityIcons } from '../UtilityIcons';
