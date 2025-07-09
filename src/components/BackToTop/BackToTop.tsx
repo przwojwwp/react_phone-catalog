@@ -6,8 +6,8 @@ export const BackToTop = () => {
   };
   return (
     <button className={styles['back-to-top']} onClick={handleClick}>
-      <span className={styles['back-to-top-label']}>Back to top</span>
-      <span className={styles['back-to-top-icon']}>↑</span>
+      <span className={styles.label}>Back to top</span>
+      <span className={styles.icon}>↑</span>
     </button>
   );
 };

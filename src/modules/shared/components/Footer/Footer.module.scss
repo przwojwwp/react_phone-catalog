@@ -1,6 +1,7 @@
 .footer {
   display: flex;
   justify-content: center;
+  align-items: center;
 
   width: 100%;
   height: 96px;
@@ -9,7 +10,6 @@
 
 .wrapper {
   display: flex;
-  justify-content: center;
   width: 100%;
   max-width: 1136px;
   justify-content: space-between;
@@ -28,4 +28,9 @@
 
   text-decoration: none;
   color: $color-secondary;
+}
+
+.back-to-top {
+  display: flex;
+  align-items: center;
 }

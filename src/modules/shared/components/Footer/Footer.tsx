@@ -20,7 +20,9 @@ export const Footer = () => {
             Rights
           </a>
         </div>
-        <BackToTop />
+        <div className={styles['back-to-top']}>
+          <BackToTop />
+        </div>
       </div>
     </div>
   );
