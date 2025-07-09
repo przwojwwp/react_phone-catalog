@@ -1,4 +1,5 @@
 import { Header } from './modules/shared/components/Header';
+import { Footer } from './modules/shared/components/Footer/Footer';
 import { MobileMenu } from './modules/shared/components/MobileMenu';
 import { useMobileMenu } from './modules/shared/context/MobileMenuContext';
 
@@ -11,6 +12,8 @@ export const App = () => {
     <div className="App">
       {isOpen ? <MobileMenu /> : <Header />}
       {/* <h1>Product Catalog</h1> */}
+
+      <Footer />
     </div>
   );
 };
