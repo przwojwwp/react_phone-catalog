@@ -4,9 +4,9 @@
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"],
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@": ["*"]
+      "@/*": ["src/*"]
     }
   }
 }

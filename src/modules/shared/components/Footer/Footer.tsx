@@ -1,3 +1,4 @@
+import { BackToTop } from '../../../../components/BackToTop';
 import { Logo } from '../Logo';
 import styles from './Footer.module.scss';
 
@@ -19,10 +20,7 @@ export const Footer = () => {
             Rights
           </a>
         </div>
-        <button className={styles['back-to-top']}>
-          <span className={styles['back-to-top-label']}>Back to top</span>
-          <span className={styles['back-to-top-icon']}>↑</span>
-        </button>
+        <BackToTop />
       </div>
     </div>
   );
