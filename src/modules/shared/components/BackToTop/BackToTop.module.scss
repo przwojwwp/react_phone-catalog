@@ -4,35 +4,39 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-}
 
-.label {
-  @include small-text;
-  font-family: Mont;
-  text-align: right;
-  color: #89939a;
-  margin-right: 16px;
+  .label {
+    @include small-text;
+    font-family: Mont;
+    text-align: right;
+    color: #89939a;
+    margin-right: 16px;
 
-  transition: color 0.4s ease;
-}
+    transition: color 0.4s ease;
+  }
 
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: 1px solid #b4bdc3;
-  border-radius: 100%;
-  transition: border 0.4s ease;
-}
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    border-radius: 100%;
+    transition: border 0.4s ease;
 
-.icon svg {
-  stroke: black;
-}
+    svg {
+      stroke: black;
+    }
+  }
 
-.back-to-top:hover .label,
-.back-to-top:hover .icon {
-  color: black;
-  border-color: black;
+  &:hover {
+    .label {
+      color: black;
+    }
+
+    .icon-container {
+      border-color: black;
+    }
+  }
 }

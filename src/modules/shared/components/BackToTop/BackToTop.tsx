@@ -12,7 +12,7 @@ export const BackToTop = () => {
       type="button"
     >
       <span className={styles.label}>Back to top</span>
-      <span className={styles.icon}>
+      <span className={styles['icon-container']}>
         <BackToTopIcon />
       </span>
     </button>
