@@ -7,10 +7,8 @@
 }
 
 .label {
+  @include small-text;
   font-family: Mont;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
   text-align: right;
   color: #89939a;
   margin-right: 16px;
@@ -18,24 +16,23 @@
   transition: color 0.4s ease;
 }
 
-.icon svg {
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 32px;
   height: 32px;
-  opacity: 1;
-  border-width: 1px;
-  border-radius: 48px;
-  transform: rotate(-0.25turn);
+  border: 1px solid #b4bdc3;
+  border-radius: 100%;
+  transition: border 0.4s ease;
 }
 
-svg rect {
-  stroke: #b4bdc4;
-  transition: stroke 0.4s ease;
-}
-
-.back-to-top:hover svg rect {
+.icon svg {
   stroke: black;
 }
 
-.back-to-top:hover .label {
+.back-to-top:hover .label,
+.back-to-top:hover .icon {
   color: black;
+  border-color: black;
 }

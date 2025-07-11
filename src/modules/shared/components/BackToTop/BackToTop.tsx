@@ -1,5 +1,5 @@
 import styles from './BackToTop.module.scss';
-import SliderButton from '@/assets/icons/slider-button-right.svg?react';
+import BackToTopIcon from '@/assets/icons/arrow-up.svg?react';
 export const BackToTop = () => {
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -13,7 +13,7 @@ export const BackToTop = () => {
     >
       <span className={styles.label}>Back to top</span>
       <span className={styles.icon}>
-        <SliderButton />
+        <BackToTopIcon />
       </span>
     </button>
   );
