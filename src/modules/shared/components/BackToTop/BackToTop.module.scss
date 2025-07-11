@@ -1,0 +1,41 @@
+.back-to-top {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.label {
+  font-family: Mont;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: right;
+  color: #89939a;
+  margin-right: 16px;
+
+  transition: color 0.4s ease;
+}
+
+.icon svg {
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  border-width: 1px;
+  border-radius: 48px;
+  transform: rotate(-0.25turn);
+}
+
+svg rect {
+  stroke: #b4bdc4;
+  transition: stroke 0.4s ease;
+}
+
+.back-to-top:hover svg rect {
+  stroke: black;
+}
+
+.back-to-top:hover .label {
+  color: black;
+}

@@ -1,4 +1,4 @@
-import { BackToTop } from '../../../../components/BackToTop';
+import { BackToTop } from '../BackToTop';
 import { Logo } from '../Logo';
 import styles from './Footer.module.scss';
 
