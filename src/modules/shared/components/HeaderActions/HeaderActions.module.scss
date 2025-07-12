@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   margin-left: auto;
 }
 
@@ -9,9 +10,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   width: 48px;
   height: 48px;
   border: none;
+
   background-color: $color-white;
   box-shadow: -1px 0px 0px 0px $color-elements;
 
@@ -21,11 +24,13 @@
 }
 
 .icon {
-  width: 64px;
-  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 64px;
+  height: 64px;
+
   box-shadow: -1px 0px 0px 0px $color-elements;
 
   :hover {

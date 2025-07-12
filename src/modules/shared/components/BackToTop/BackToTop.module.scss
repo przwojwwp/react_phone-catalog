@@ -1,16 +1,23 @@
 .back-to-top {
   display: flex;
   align-items: center;
+
   border: none;
+
   background-color: transparent;
+
+  font-family: $font-family;
+
   cursor: pointer;
 
   .label {
     @include small-text;
-    font-family: Mont;
-    text-align: right;
-    color: #89939a;
+
+    line-height: 100%;
+    color: $color-secondary;
+
     margin-right: 16px;
+    text-align: right;
 
     transition: color 0.4s ease;
   }
@@ -19,24 +26,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     width: 32px;
     height: 32px;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $color-icons;
     border-radius: 100%;
+
     transition: border 0.4s ease;
 
     svg {
-      stroke: black;
+      stroke: $color-primary;
     }
   }
 
   &:hover {
     .label {
-      color: black;
+      color: $color-primary;
     }
 
     .icon-container {
-      border-color: black;
+      border-color: $color-primary;
     }
   }
 }
