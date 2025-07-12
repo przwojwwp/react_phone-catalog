@@ -4,7 +4,7 @@
 
   border: none;
 
-  background-color: transparent;
+  background-color: $color-background-transparent;
 
   font-family: $font-family;
 
@@ -19,7 +19,7 @@
     margin-right: 16px;
     text-align: right;
 
-    transition: color 0.4s ease;
+    transition: color $animation-duration-hover ease;
   }
 
   .icon-container {
@@ -32,7 +32,7 @@
     border: 1px solid $color-icons;
     border-radius: 100%;
 
-    transition: border 0.4s ease;
+    transition: border $animation-duration-hover ease;
 
     svg {
       stroke: $color-primary;
