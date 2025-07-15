@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.wrapper}>
-        <Logo />
+        <Logo isFooter={true} />
         <div className={styles.links}>
           <a
             href="https://github.com/przwojwwp/react_phone-catalog"

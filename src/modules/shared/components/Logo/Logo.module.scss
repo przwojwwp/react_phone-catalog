@@ -31,3 +31,19 @@
     height: 22px;
   }
 }
+
+.wrapper-footer {
+  display: flex;
+
+  width: 288px;
+  height: 32px;
+
+  @include mobile {
+    margin-top: 16px;
+  }
+}
+
+.logo-footer {
+  width: 89px;
+  height: 32px;
+}

@@ -7,6 +7,13 @@
   height: 96px;
 
   background-color: $color-white;
+
+  @include mobile {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 257px;
+    padding: 16px;
+  }
 }
 
 .wrapper {
@@ -15,6 +22,11 @@
 
   width: 100%;
   max-width: 1136px;
+
+  @include mobile {
+    height: 100%;
+    flex-direction: column;
+  }
 }
 
 .links {
@@ -23,6 +35,12 @@
   align-items: center;
 
   width: 378.67px;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: start;
+    height: 65px;
+  }
 }
 
 .links a {
@@ -34,4 +52,8 @@
 .back-to-top-container {
   display: flex;
   align-items: center;
+
+  @include mobile {
+    margin-bottom: 16px;
+  }
 }

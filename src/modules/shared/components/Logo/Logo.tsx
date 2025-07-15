@@ -5,14 +5,22 @@ import { useMobileMenu } from '../../context/MobileMenuContext';
 
 import styles from './Logo.module.scss';
 
-export const Logo = () => {
+interface LogoProps {
+  isFooter?: boolean;
+}
+
+export const Logo = ({ isFooter }: LogoProps) => {
   const { isOpen } = useMobileMenu();
+
+  const logoClass = isFooter ? styles['logo-footer'] : styles.logo;
+  const wrapperClass = isFooter ? styles['wrapper-footer'] : styles.wrapper;
+
   return (
-    <NavLink to="/home" className={styles.wrapper}>
+    <NavLink to="/home" className={wrapperClass}>
       {isOpen ? (
         <LogoBlack className={styles.logo} />
       ) : (
-        <LogoPink className={styles.logo} />
+        <LogoPink className={logoClass} />
       )}
     </NavLink>
   );
