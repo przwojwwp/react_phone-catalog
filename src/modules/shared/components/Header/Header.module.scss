@@ -12,11 +12,11 @@
   background-color: $color-white;
   box-shadow: 0px 1px 0px 0px $color-elements;
 
-  @include tablet {
+  @include respond(tablet) {
     height: 48px;
   }
 
-  @include mobile {
+  @include respond(mobile) {
     height: 48px;
   }
 }

@@ -4,9 +4,9 @@
   line-height: $h1-line-height;
   letter-spacing: $h1-letter-spacing;
 
-  @include mobile {
-    font-size: $h1-size-mobile;
-    line-height: $h1-line-height-mobile;
+  @include respond(mobile) {
+    font-size: $h1-size-respond(mobile);
+    line-height: $h1-line-height-respond(mobile);
   }
 }
 
@@ -16,9 +16,9 @@
   line-height: $h2-line-height;
   letter-spacing: $h2-letter-spacing;
 
-  @include mobile {
-    font-size: $h2-size-mobile;
-    line-height: $h2-line-height-mobile;
+  @include respond(mobile) {
+    font-size: $h2-size-respond(mobile);
+    line-height: $h2-line-height-respond(mobile);
   }
 }
 
@@ -27,10 +27,10 @@
   font-size: $h3-size;
   line-height: $h3-line-height;
 
-  @include mobile {
+  @include respond(mobile) {
     font-weight: $font-weight-semibold;
-    font-size: $h3-size-mobile;
-    line-height: $h3-line-height-mobile;
+    font-size: $h3-size-respond(mobile);
+    line-height: $h3-line-height-respond(mobile);
   }
 }
 
@@ -39,9 +39,9 @@
   font-size: $h4-size;
   line-height: $h4-line-height;
 
-  @include mobile {
-    font-size: $h4-size-mobile;
-    line-height: $h4-line-height-mobile;
+  @include respond(mobile) {
+    font-size: $h4-size-respond(mobile);
+    line-height: $h4-line-height-respond(mobile);
   }
 }
 

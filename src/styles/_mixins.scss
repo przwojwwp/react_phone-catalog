@@ -1,33 +1,15 @@
 @mixin respond($breakpoint) {
   @if $breakpoint == mobile {
-    @media (max-width: 639px) {
+    @media (max-width: 639.9px) {
       @content;
     }
   } @else if $breakpoint == tablet {
-    @media (min-width: 640px) and (max-width: 1199px) {
+    @media (min-width: 640px) and (max-width: 1199.9px) {
       @content;
     }
   } @else if $breakpoint == desktop {
     @media (min-width: 1200px) {
       @content;
     }
-  }
-}
-
-@mixin mobile {
-  @media (max-width: 639px) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media (min-width: 640px) and (max-width: 1199px) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: 1200px) {
-    @content;
   }
 }
