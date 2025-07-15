@@ -3,32 +3,32 @@
   align-items: center;
   justify-content: center;
 
-  width: 128px;
-  height: 64px;
+  width: 96px;
+  height: 48px;
 
   @include respond(tablet) {
     width: 96px;
     height: 48px;
   }
 
-  @include respond(mobile) {
-    width: 96px;
-    height: 48px;
+  @include respond(desktop) {
+    width: 128px;
+    height: 64px;
   }
 }
 
 .logo {
-  width: 80px;
-  height: 28px;
+  width: 64px;
+  height: 22px;
 
   @include respond(tablet) {
     width: 64px;
     height: 22px;
   }
 
-  @include respond(mobile) {
-    width: 64px;
-    height: 22px;
+  @include respond(desktop) {
+    width: 80px;
+    height: 28px;
   }
 }
 

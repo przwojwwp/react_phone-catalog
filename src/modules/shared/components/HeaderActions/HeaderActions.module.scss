@@ -28,8 +28,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 
   box-shadow: -1px 0px 0px 0px $color-elements;
 
@@ -42,9 +42,9 @@
     height: 48px;
   }
 
-  @include respond(mobile) {
-    width: 48px;
-    height: 48px;
+  @include respond(desktop) {
+    width: 64px;
+    height: 64px;
   }
 
   svg {
