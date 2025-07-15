@@ -35,11 +35,10 @@
 .wrapper-footer {
   display: flex;
 
-  width: 288px;
   height: 32px;
 
   @include respond(tablet) {
-    width: 192px;
+    width: 100%;
   }
 
   @include respond(mobile) {

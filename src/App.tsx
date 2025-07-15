@@ -11,7 +11,7 @@ export const App = () => {
       <Header />
       {/* <h1>Product Catalog</h1> */}
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

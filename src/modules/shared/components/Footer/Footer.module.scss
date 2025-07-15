@@ -1,57 +1,78 @@
 .footer {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 
   width: 100vw;
-  height: 96px;
-  padding: 32px;
+  height: 257px;
+  padding: 16px;
 
   background-color: $color-white;
 
-  @include respond(mobile) {
-    flex-direction: column;
-    justify-content: space-between;
-    height: 257px;
-    padding: 16px;
+  @include respond(tablet) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 96px;
+    padding: 24px;
+  }
+
+  @include respond(desktop) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 96px;
+    padding: 24px;
   }
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   width: 100%;
+  height: 100%;
+
   max-width: 1136px;
 
   @include respond(tablet) {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    align-items: center;
   }
 
-  @include respond(mobile) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+  @include respond(desktop) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
   }
+}
+
+.wrapper > * {
+  flex-grow: 1;
 }
 
 .links {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 
-  width: 378.67px;
+  flex-direction: column;
+  align-items: start;
+  height: 65px;
+  width: 100%;
 
   @include respond(tablet) {
-    width: 192px;
+    flex-direction: row;
+
+    width: 100%;
+    height: 11px;
   }
 
-  @include respond(mobile) {
-    flex-direction: column;
-    align-items: start;
-    height: 65px;
+  @include respond(desktop) {
+    flex-direction: row;
     width: 100%;
+    height: 11px;
   }
 }
 
@@ -64,8 +85,16 @@
 .back-to-top-container {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
 
-  @include respond(mobile) {
-    margin-bottom: 16px;
+  @include respond(tablet) {
+    justify-content: flex-end;
+    margin-bottom: 0;
+  }
+
+  @include respond(desktop) {
+    justify-content: flex-end;
+    margin-bottom: 0;
   }
 }
