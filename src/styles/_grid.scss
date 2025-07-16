@@ -1,15 +1,24 @@
+// Common values
+$grid-gutter: 16px;
+$grid-column-width: 32px;
+
 // Desktop (≥1200px)
-$grid-columns-desktop: 24;
-$grid-gutter-desktop: 16px;
-$grid-column-width-desktop: 32px;
-$grid-container-width-desktop: 1200px;
+$grid-columns-amount-desktop: 24;
+$grid-gutter-amount-desktop: $grid-columns-amount-desktop - 1;
+
+$grid-container-width-desktop: (
+    $grid-columns-amount-desktop * $grid-column-width
+  ) +
+  ($grid-gutter-amount-desktop * $grid-gutter);
 
 // Tablet (640–1199px)
 $grid-columns-tablet: 12;
-$grid-gutter-tablet: 16px;
 $grid-margin-tablet: 24px;
+
+$grid-container-padding-tablet: $grid-margin-tablet;
 
 // Mobile (320–639px)
 $grid-columns-mobile: 4;
-$grid-gutter-mobile: 16px;
 $grid-margin-mobile: 16px;
+
+$grid-container-padding-mobile: $grid-margin-mobile;

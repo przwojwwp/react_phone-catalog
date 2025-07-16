@@ -1,6 +1,5 @@
 .App {
   height: 200vh;
-  background-color: $color-background;
 }
 
 .no-scroll {
@@ -8,7 +7,7 @@
 }
 
 .main-content {
-  max-width: 1136px;
+  max-width: $grid-container-width-desktop;
   margin: 0 auto;
   background-color: $color-background;
 }

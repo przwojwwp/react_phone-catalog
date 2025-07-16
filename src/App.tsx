@@ -1,10 +1,11 @@
 import { HomePage } from './modules/HomePage/HomePage';
 import { PhonePage } from './modules/PhonePage/PhonePage';
 
-import './App.scss';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { MainLayout } from './modules/Layout/MainLayout';
 import { NotFoundPage } from './modules/NotFoundPage';
+
+import './App.scss';
 
 export const App = () => {
   return (
