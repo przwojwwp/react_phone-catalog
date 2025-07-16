@@ -1,8 +1,14 @@
 .App {
   height: 200vh;
-  background-color: #000000;
+  background-color: $color-background;
 }
 
 .no-scroll {
   overflow: hidden;
+}
+
+.main-content {
+  max-width: 1136px;
+  margin: 0 auto;
+  background-color: $color-background;
 }

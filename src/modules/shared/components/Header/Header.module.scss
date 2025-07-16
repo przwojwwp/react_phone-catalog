@@ -10,7 +10,7 @@
   gap: 24px;
 
   background-color: $color-white;
-  box-shadow: 0px 1px 0px 0px $color-elements;
+  box-shadow: 0px 1px 0px 0px $color-light-border;
 
   @include respond(tablet) {
     height: 48px;
