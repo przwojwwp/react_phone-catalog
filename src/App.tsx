@@ -1,17 +1,21 @@
-import { Header } from './modules/shared/components/Header';
-import { Footer } from './modules/shared/components/Footer/Footer';
-import { MobileMenu } from './modules/shared/components/MobileMenu';
+import { HomePage } from './modules/HomePage/HomePage';
+import { PhonePage } from './modules/PhonePage/PhonePage';
 
 import './App.scss';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { MainLayout } from './modules/Layout/MainLayout';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 export const App = () => {
   return (
-    <div className="App">
-      <MobileMenu />
-      <Header />
-      {/* <h1>Product Catalog</h1> */}
-
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="home" element={<Navigate to="/" replace />} />
+        <Route path="phones" element={<PhonePage />} />
+        <Route path="phone/:slug" element={<PhonePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 };
