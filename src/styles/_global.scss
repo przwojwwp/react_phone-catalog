@@ -16,5 +16,12 @@
 .main-content {
   max-width: $grid-container-width-desktop;
   margin: 0 auto;
-  background-color: $color-background;
+
+  @include respond(tablet) {
+    margin: $grid-margin-tablet;
+  }
+
+  @include respond(mobile) {
+    margin: $grid-margin-mobile;
+  }
 }

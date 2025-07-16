@@ -13,12 +13,8 @@ $grid-container-width-desktop: (
 
 // Tablet (640–1199px)
 $grid-columns-tablet: 12;
-$grid-margin-tablet: 24px;
-
-$grid-container-padding-tablet: $grid-margin-tablet;
+$grid-margin-tablet: 32px 24px 64px;
 
 // Mobile (320–639px)
 $grid-columns-mobile: 4;
-$grid-margin-mobile: 16px;
-
-$grid-container-padding-mobile: $grid-margin-mobile;
+$grid-margin-mobile: 24px 16px 64px;
