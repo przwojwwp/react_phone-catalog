@@ -9,7 +9,7 @@ export const Footer = () => {
         <Logo isFooter={true} />
         <div className={styles.links}>
           <a
-            href="https://github.com/przwojwwp/react_phone-catalog"
+            href="https://github.com/przwojwwp/react_phone-catalog/tree/develop"
             target="_blank"
             rel="noopener noreferrer"
           >
