@@ -1,47 +1,78 @@
 @mixin h1 {
   font-weight: $font-weight-bold;
-  font-size: $h1-size;
-  line-height: $h1-line-height;
-  letter-spacing: $h1-letter-spacing;
+  font-size: $h1-size-mobile;
+  line-height: $h1-line-height-mobile;
+  letter-spacing: $h1-letter-spacing-mobile;
 
-  @include respond(mobile) {
-    font-size: $h1-size-respond(mobile);
-    line-height: $h1-line-height-respond(mobile);
+  @include respond(tablet) {
+    font-size: $h1-size-tablet-desktop;
+    line-height: $h1-line-height-tablet-desktop;
+    letter-spacing: $h1-letter-spacing-tablet-desktop;
+  }
+
+  @include respond(desktop) {
+    font-size: $h1-size-tablet-desktop;
+    line-height: $h1-line-height-tablet-desktop;
+    letter-spacing: $h1-letter-spacing-tablet-desktop;
   }
 }
 
 @mixin h2 {
   font-weight: $font-weight-bold;
-  font-size: $h2-size;
-  line-height: $h2-line-height;
-  letter-spacing: $h2-letter-spacing;
+  font-size: $h2-size-mobile;
+  line-height: $h2-line-height-mobile;
+  letter-spacing: $h2-letter-spacing-mobile;
 
-  @include respond(mobile) {
-    font-size: $h2-size-respond(mobile);
-    line-height: $h2-line-height-respond(mobile);
+  @include respond(tablet) {
+    font-size: $h2-size-tablet-desktop;
+    line-height: $h2-line-height-tablet-desktop;
+    letter-spacing: $h2-letter-spacing-tablet-desktop;
+  }
+
+  @include respond(desktop) {
+    font-size: $h2-size-tablet-desktop;
+    line-height: $h2-line-height-tablet-desktop;
+    letter-spacing: $h2-letter-spacing-tablet-desktop;
   }
 }
 
 @mixin h3 {
   font-weight: $font-weight-bold;
-  font-size: $h3-size;
-  line-height: $h3-line-height;
+  font-size: $h3-size-mobile;
+  line-height: $h3-line-height-mobile;
+  letter-spacing: $h3-letter-spacing-mobile;
 
-  @include respond(mobile) {
+  @include respond(tablet) {
     font-weight: $font-weight-semibold;
-    font-size: $h3-size-respond(mobile);
-    line-height: $h3-line-height-respond(mobile);
+    font-size: $h3-size-tablet-desktop;
+    line-height: $h3-line-height-tablet-desktop;
+    letter-spacing: $h3-letter-spacing-tablet-desktop;
+  }
+
+  @include respond(desktop) {
+    font-weight: $font-weight-semibold;
+    font-size: $h3-size-tablet-desktop;
+    line-height: $h3-line-height-tablet-desktop;
+    letter-spacing: $h3-letter-spacing-tablet-desktop;
   }
 }
 
 @mixin h4 {
   font-weight: $font-weight-semibold;
-  font-size: $h4-size;
-  line-height: $h4-line-height;
+  font-size: $h4-size-mobile;
+  line-height: $h4-line-height-mobile;
+  letter-spacing: $h4-letter-spacing-mobile;
 
-  @include respond(mobile) {
-    font-size: $h4-size-respond(mobile);
-    line-height: $h4-line-height-respond(mobile);
+  @include respond(tablet) {
+    font-size: $h4-size-tablet-desktop;
+    line-height: $h4-line-height-tablet-desktop;
+    letter-spacing: $h4-letter-spacing-tablet-desktop;
+  }
+
+  @include respond(desktop) {
+    font-size: $h4-size-tablet-desktop;
+    line-height: $h4-line-height-tablet-desktop;
+    letter-spacing: $h4-letter-spacing-tablet-desktop;
   }
 }
 

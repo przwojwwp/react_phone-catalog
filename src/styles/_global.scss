@@ -24,3 +24,19 @@
   @include respond(desktop) {
   }
 }
+
+h1 {
+  @include h1;
+}
+
+h2 {
+  @include h2;
+}
+
+h3 {
+  @include h3;
+}
+
+h4 {
+  @include h4;
+}
