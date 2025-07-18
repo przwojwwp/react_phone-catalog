@@ -1,6 +1,6 @@
 // import styles from './HomePage.module.scss';
 
-import { PictureSlider } from "./components/PictureSlider";
+import { PictureSlider } from './components/PictureSlider';
 
 export const HomePage = () => {
   return (
