@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 
-const images = ['/img/banner-home-page-1.png'];
+import cn from 'classnames';
+import styles from './PictureSlider.module.scss';
+
+const images = [
+  '/img/banner-home-page-1.png',
+  '/img/banner-home-page-1.png',
+  '/img/banner-home-page-1.png',
+];
 
 export const PictureSlider = () => {
   const [index, setIndex] = useState(0);
@@ -18,22 +25,22 @@ export const PictureSlider = () => {
   };
 
   return (
-    <div className="pictures-slider">
+    <div className={styles['pictures-slider']}>
       <div
-        className="slider-track"
+        className={styles['slider-track']}
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {images.map((src, i) => (
-          <div className="slide" key={i}>
+          <div className={styles.slide} key={i}>
             <img src={src} alt={`slide=${i}`} />
           </div>
         ))}
       </div>
-      <div className="dots">
+      <div className={styles.dots}>
         {images.map((_, i) => (
           <button
             key={i}
-            className={`dot ${i === index ? 'active' : ''}`}
+            className={cn(styles.dot, { [styles.active]: i === index })}
             onClick={() => goTo(i)}
           />
         ))}

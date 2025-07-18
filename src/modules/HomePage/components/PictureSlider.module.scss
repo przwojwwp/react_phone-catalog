@@ -1,2 +1,18 @@
-.picture-slider {
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.slide img {
+  width: clamp(320px, 100vw, 639px);
+  height: clamp(320px, 100vw, 639px);
+  object-fit: cover;
+  display: block;
 }
