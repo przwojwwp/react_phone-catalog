@@ -1,10 +1,11 @@
 .pictures-slider {
   position: relative;
   aspect-ratio: 1 / 1.1;
-  overflow: hidden;
+  overflow-x: hidden;
 
   .slider-track {
     display: flex;
+    aspect-ratio: 1 / 1;
     transition: transform $animation-duration-picture-slider ease;
 
     &.no-transition {
@@ -30,25 +31,33 @@
 
 .dots {
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 4px;
 
-  .dot {
-    width: 14px;
-    height: 4px;
-    border-radius: 2px;
-    background-color: $color-light-border;
-    border: none;
-    transition:
-      background-color 0.3s ease,
-      width 0.3s ease;
-    cursor: pointer;
+  .dot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
 
-    &.active {
-      background-color: $color-primary;
+    .dot {
+      width: 14px;
+      height: 4px;
+      border-radius: 2px;
+      background-color: $color-light-border;
+      border: none;
+      transition:
+        background-color 0.3s ease,
+        width 0.3s ease;
+      cursor: pointer;
+
+      &.active {
+        background-color: $color-primary;
+      }
     }
   }
 }
