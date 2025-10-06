@@ -53,38 +53,38 @@ export const PictureSlider = () => {
     });
   }, [length]);
 
+  const startAutoplay = useCallback(() => {
+    if (intervalRef.current !== null) return;
+    intervalRef.current = window.setInterval(() => {
+      setIndex(prev => prev + 1);
+    }, 5000);
+  }, []);
+
+  const stopAutoplay = useCallback(() => {
+    if (intervalRef.current !== null) {
+      window.clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
-    const start = () => {
-      if (intervalRef.current !== null) return;
-      intervalRef.current = window.setInterval(() => {
-        setIndex(prev => prev + 1);
-      }, 5000);
-    };
-
-    const stop = () => {
-      if (intervalRef.current !== null) {
-        window.clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-    };
-
     const onVisibilityChange = () => {
       if (document.hidden) {
-        stop();
+        stopAutoplay();
       } else {
         normalizeIndex();
-        start();
+        startAutoplay();
       }
     };
 
-    start();
+    startAutoplay();
     document.addEventListener('visibilitychange', onVisibilityChange);
 
     return () => {
       document.removeEventListener('visibilitychange', onVisibilityChange);
-      stop();
+      stopAutoplay();
     };
-  }, [normalizeIndex]);
+  }, [normalizeIndex, startAutoplay, stopAutoplay]);
 
   const onTransitionEnd = () => {
     if (!slides.length) return;
@@ -107,7 +107,9 @@ export const PictureSlider = () => {
   };
 
   const goTo = (i: number) => {
+    stopAutoplay();
     setIndex(i + 1);
+    startAutoplay();
   };
 
   const activeDot = length ? (index - 1 + length) % length : 0;
