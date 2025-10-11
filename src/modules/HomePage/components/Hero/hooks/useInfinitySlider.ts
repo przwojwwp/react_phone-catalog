@@ -17,11 +17,11 @@ export const useInfinitySlider = ({
   autoplayMs = 5000,
   startDot = 0,
 }: Options) => {
+  const length = images.length;
+  const hasLoop = length > 1;
   const [index, setIndex] = useState(() => (hasLoop ? startDot + 1 : startDot));
   const [withTransition, setWithTransition] = useState(true);
   const intervalRef = useRef<number | null>(null);
-  const length = images.length;
-  const hasLoop = length > 1;
 
   const slides: Slide[] = useMemo(() => {
     if (!length) return [];
@@ -135,6 +135,5 @@ export const useInfinitySlider = ({
     activeDot,
     startAutoplay,
     stopAutoplay,
-    hasLoop,
   };
 };
