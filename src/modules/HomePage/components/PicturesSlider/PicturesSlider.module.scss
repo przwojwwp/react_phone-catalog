@@ -4,6 +4,14 @@
   overflow-x: hidden;
   margin-inline: -16px;
 
+  @include respond(tablet) {
+    margin-inline: 0;
+  }
+
+  @include respond(desktop) {
+    margin-inline: 0;
+  }
+
   .slider-track {
     display: flex;
     aspect-ratio: 1 / 1;
