@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import styles from './PictureSlider.module.scss';
+import styles from './PicturesSlider.module.scss';
 import { useInfinitySlider } from './hooks/useInfinitySlider';
 
 const images = [
@@ -8,7 +8,7 @@ const images = [
   '/img/page-not-found.png',
 ];
 
-export const PictureSlider = () => {
+export const PicturesSlider = () => {
   const { slides, index, withTransition, onTransitionEnd, goTo, activeDot } =
     useInfinitySlider({
       images,

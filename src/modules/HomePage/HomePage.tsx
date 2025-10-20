@@ -1,6 +1,6 @@
 // import styles from './HomePage.module.scss';
 
-import { PictureSlider } from './components/Hero/PictureSlider';
+import { PicturesSlider } from './components/PicturesSlider';
 
 export const HomePage = () => {
   return (
@@ -8,7 +8,7 @@ export const HomePage = () => {
       <h1>Welcome to Nice Gadgets store!</h1>
       <h1 className="visually-hidden">Product Catalog</h1>
 
-      <PictureSlider />
+      <PicturesSlider />
     </>
   );
 };
