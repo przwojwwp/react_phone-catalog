@@ -15,6 +15,10 @@ $color-red: #eb5757;
 
 $color-background-transparent: transparent;
 
+// ==== LAYERS ====
+$z-base: 0;
+$z-header: 100;
+
 // ==== ANIMATION ====
 $animation-duration-menu: 0.3s;
 $animation-duration-hover: 0.4s;
