@@ -1,0 +1,11 @@
+.title {
+  margin: 24px auto;
+
+  @include respond(tablet) {
+    margin: 32px auto;
+  }
+
+  @include respond(desktop) {
+    margin: 56px auto;
+  }
+}

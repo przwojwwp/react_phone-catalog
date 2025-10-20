@@ -2,6 +2,12 @@
 $grid-gutter: 16px;
 $grid-column-width: 32px;
 
+// Mobile (320–639px)
+$grid-columns-mobile: 4;
+
+// Tablet (640–1199px)
+$grid-columns-tablet: 12;
+
 // Desktop (≥1200px)
 $grid-columns-amount-desktop: 24;
 $grid-gutter-amount-desktop: $grid-columns-amount-desktop - 1;
@@ -10,11 +16,3 @@ $grid-container-width-desktop: (
     $grid-columns-amount-desktop * $grid-column-width
   ) +
   ($grid-gutter-amount-desktop * $grid-gutter);
-
-// Tablet (640–1199px)
-$grid-columns-tablet: 12;
-$grid-margin-tablet: 32px 0 64px;
-
-// Mobile (320–639px)
-$grid-columns-mobile: 4;
-$grid-margin-mobile: 24px 0 64px;

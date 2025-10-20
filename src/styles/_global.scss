@@ -15,13 +15,15 @@
 
 .main-content {
   max-width: $grid-container-width-desktop;
-  margin: $grid-margin-mobile;
+  margin-inline: auto;
+  padding-inline: $margin-inline-mobile;
 
   @include respond(tablet) {
-    margin: $grid-margin-tablet;
+    padding-inline: $margin-inline-tablet;
   }
 
   @include respond(desktop) {
+    padding-inline: $margin-inline-desktop;
   }
 }
 

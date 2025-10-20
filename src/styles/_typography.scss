@@ -3,20 +3,17 @@
   font-size: $h1-size-mobile;
   line-height: $h1-line-height-mobile;
   letter-spacing: $h1-letter-spacing-mobile;
-  margin-inline: $margin-inline-mobile;
 
   @include respond(tablet) {
     font-size: $h1-size-tablet-desktop;
     line-height: $h1-line-height-tablet-desktop;
     letter-spacing: $h1-letter-spacing-tablet-desktop;
-    margin-inline: $margin-inline-tablet;
   }
 
   @include respond(desktop) {
     font-size: $h1-size-tablet-desktop;
     line-height: $h1-line-height-tablet-desktop;
     letter-spacing: $h1-letter-spacing-tablet-desktop;
-    margin-inline: $margin-inline-desktop;
   }
 }
 
@@ -25,20 +22,17 @@
   font-size: $h2-size-mobile;
   line-height: $h2-line-height-mobile;
   letter-spacing: $h2-letter-spacing-mobile;
-  margin-inline: $margin-inline-mobile;
 
   @include respond(tablet) {
     font-size: $h2-size-tablet-desktop;
     line-height: $h2-line-height-tablet-desktop;
     letter-spacing: $h2-letter-spacing-tablet-desktop;
-    margin-inline: $margin-inline-tablet;
   }
 
   @include respond(desktop) {
     font-size: $h2-size-tablet-desktop;
     line-height: $h2-line-height-tablet-desktop;
     letter-spacing: $h2-letter-spacing-tablet-desktop;
-    margin-inline: $margin-inline-desktop;
   }
 }
 
@@ -47,20 +41,17 @@
   font-size: $h3-size-mobile;
   line-height: $h3-line-height-mobile;
   letter-spacing: $h3-letter-spacing-mobile;
-  margin-inline: $margin-inline-mobile;
 
   @include respond(tablet) {
     font-size: $h3-size-tablet-desktop;
     line-height: $h3-line-height-tablet-desktop;
     letter-spacing: $h3-letter-spacing-tablet-desktop;
-    margin-inline: $margin-inline-tablet;
   }
 
   @include respond(desktop) {
     font-size: $h3-size-tablet-desktop;
     line-height: $h3-line-height-tablet-desktop;
     letter-spacing: $h3-letter-spacing-tablet-desktop;
-    margin-inline: $margin-inline-desktop;
   }
 }
 
@@ -69,20 +60,17 @@
   font-size: $h4-size-mobile;
   line-height: $h4-line-height-mobile;
   letter-spacing: $h4-letter-spacing-mobile;
-  margin-inline: $margin-inline-mobile;
 
   @include respond(tablet) {
     font-size: $h4-size-tablet-desktop;
     line-height: $h4-line-height-tablet-desktop;
     letter-spacing: $h4-letter-spacing-tablet-desktop;
-    margin-inline: $margin-inline-tablet;
   }
 
   @include respond(desktop) {
     font-size: $h4-size-tablet-desktop;
     line-height: $h4-line-height-tablet-desktop;
     letter-spacing: $h4-letter-spacing-tablet-desktop;
-    margin-inline: $margin-inline-desktop;
   }
 }
 
