@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+// import { start } from 'repl';
 
 type Slide = {
   key: string;
@@ -124,7 +125,113 @@ export const useInfinitySlider = ({
     [hasLoop, startAutoplay, stopAutoplay],
   );
 
+  const nextSlide = useCallback(() => {
+    stopAutoplay();
+    setIndex(prev => prev + 1);
+    startAutoplay();
+  }, [startAutoplay, stopAutoplay]);
+
+  const prevSlide = useCallback(() => {
+    stopAutoplay();
+    setIndex(prev => prev - 1);
+    startAutoplay();
+  }, [startAutoplay, stopAutoplay]);
+
   const activeDot = hasLoop ? (index - 1 + length) % length : 0;
+
+  const [dragOffset, setDragOffset] = useState(0);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const pointerIdRef = useRef<number | null>(null);
+  const startXRef = useRef(0);
+  const startYRef = useRef(0);
+  const widthRef = useRef(1);
+  const lockRef = useRef<'x' | 'y' | null>(null);
+  const rafMoveRef = useRef<number | null>(null);
+
+  const onPointerDown = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      const el = containerRef.current;
+      if (!el) return;
+
+      pointerIdRef.current = e.pointerId;
+      try {
+        el.setPointerCapture(e.pointerId);
+      } catch {}
+
+      widthRef.current = el.clientWidth || 1;
+      startXRef.current = e.clientX;
+      startYRef.current = e.clientY;
+      lockRef.current = null;
+
+      setDragOffset(0);
+      setWithTransition(false);
+      stopAutoplay();
+    },
+    [stopAutoplay],
+  );
+
+  const onPointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    if (pointerIdRef.current === null || e.pointerId !== pointerIdRef.current)
+      return;
+
+    const dx = e.clientX - startXRef.current;
+    const dy = e.clientY - startYRef.current;
+
+    if (!lockRef.current) {
+      const MIN_LOCK = 6;
+      if (Math.abs(dx) < MIN_LOCK && Math.abs(dy) < MIN_LOCK) return;
+      lockRef.current = Math.abs(dx) >= Math.abs(dy) ? 'x' : 'y';
+    }
+    if (lockRef.current === 'y') return;
+
+    const clamped = Math.max(-widthRef.current, Math.min(widthRef.current, dx));
+
+    if (rafMoveRef.current == null) {
+      rafMoveRef.current = requestAnimationFrame(() => {
+        setDragOffset(clamped);
+        rafMoveRef.current && cancelAnimationFrame(rafMoveRef.current);
+        rafMoveRef.current = null;
+      });
+    }
+  }, []);
+
+  const onPointerUp = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      if (e.pointerId !== pointerIdRef.current) return;
+
+      try {
+        (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+      } catch {}
+      pointerIdRef.current = null;
+
+      const dx = e.clientX - startXRef.current;
+      const dy = e.clientY - startYRef.current;
+      const thresholdPx = widthRef.current * 0.15;
+
+      setWithTransition(true);
+
+      if (Math.abs(dx) >= thresholdPx && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) {
+          setIndex(p => p + 1);
+        } else {
+          setIndex(p => p - 1);
+        }
+      }
+
+      setDragOffset(0);
+
+      startAutoplay();
+    },
+    [startAutoplay, setIndex],
+  );
+
+  const onPointerCancel = useCallback(() => {
+    pointerIdRef.current = null;
+    setWithTransition(true);
+    setDragOffset(0);
+    startAutoplay();
+  }, [startAutoplay]);
 
   return {
     slides,
@@ -132,8 +239,19 @@ export const useInfinitySlider = ({
     withTransition,
     onTransitionEnd,
     goTo,
+    nextSlide,
+    prevSlide,
     activeDot,
+
     startAutoplay,
     stopAutoplay,
+
+    // ==== SWIPE ====
+    containerRef,
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
+    onPointerCancel,
+    dragOffset,
   };
 };

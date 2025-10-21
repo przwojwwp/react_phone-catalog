@@ -9,25 +9,46 @@ const images = [
 ];
 
 export const PicturesSlider = () => {
-  const { slides, index, withTransition, onTransitionEnd, goTo, activeDot } =
-    useInfinitySlider({
-      images,
-      autoplayMs: 5000,
-      startDot: 0,
-    });
+  const {
+    slides,
+    index,
+    withTransition,
+    onTransitionEnd,
+    goTo,
+    activeDot,
+    containerRef,
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
+    onPointerCancel,
+    dragOffset,
+  } = useInfinitySlider({
+    images,
+    autoplayMs: 5000,
+    startDot: 0,
+  });
 
   return (
-    <div className={styles['pictures-slider']}>
+    <div
+      ref={containerRef}
+      className={styles['pictures-slider']}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
+    >
       <div
         className={cn(styles['slider-track'], {
           [styles['no-transition']]: !withTransition,
         })}
-        style={{ transform: `translateX(-${index * 100}%)` }}
+        style={{
+          transform: `translateX(calc(-${index * 100}% + ${dragOffset}px))`,
+        }}
         onTransitionEnd={onTransitionEnd}
       >
         {slides.map((slide, i) => (
           <div key={slide.key} className={styles.slide}>
-            <img src={slide.src} alt={`slide=${i}`} />
+            <img src={slide.src} alt={`slide=${i}`} draggable={false} />
           </div>
         ))}
       </div>

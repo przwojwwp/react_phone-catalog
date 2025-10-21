@@ -3,6 +3,8 @@
   aspect-ratio: 1 / 1.1;
   overflow-x: hidden;
   margin-inline: -16px;
+  touch-action: pan-y;
+  user-select: none;
 
   @include respond(tablet) {
     margin-inline: 0;
@@ -16,9 +18,10 @@
     display: flex;
     aspect-ratio: 1 / 1;
     transition: transform $animation-duration-picture-slider ease;
+    will-change: transform;
 
     &.no-transition {
-      transition: none;
+      transition: none !important;
     }
   }
 
