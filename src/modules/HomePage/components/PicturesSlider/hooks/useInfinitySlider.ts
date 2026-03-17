@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-// import { start } from 'repl';
 
 type Slide = {
   key: string;
@@ -20,60 +19,175 @@ export const useInfinitySlider = ({
 }: Options) => {
   const length = images.length;
   const hasLoop = length > 1;
-  const [index, setIndex] = useState(() => (hasLoop ? startDot + 1 : startDot));
+
+  const safeStartDot = Math.max(0, Math.min(length - 1, startDot));
+
+  const [index, setIndex] = useState(() =>
+    hasLoop ? safeStartDot + 1 : safeStartDot,
+  );
   const [withTransition, setWithTransition] = useState(true);
+  const [dragOffset, setDragOffset] = useState(0);
+
   const intervalRef = useRef<number | null>(null);
+  const rafMoveRef = useRef<number | null>(null);
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const pointerIdRef = useRef<number | null>(null);
+
+  const startXRef = useRef(0);
+  const startYRef = useRef(0);
+  const startTimeRef = useRef(0);
+
+  const widthRef = useRef(1);
+  const lockRef = useRef<'x' | 'y' | null>(null);
+
+  const pendingDragOffsetRef = useRef(0);
+
+  const indexRef = useRef(index);
+  const isTransitioningRef = useRef(false);
+  const isDraggingRef = useRef(false);
+
+  useEffect(() => {
+    indexRef.current = index;
+  }, [index]);
+
+  // ================= SLIDES =================
 
   const slides: Slide[] = useMemo(() => {
     if (!length) return [];
 
     if (!hasLoop) {
-      return images.map((src, i) => ({ key: `img-${i}-${src}`, src }));
+      return images.map((src, i) => ({
+        key: `img-${i}-${src}`,
+        src,
+      }));
     }
 
     return [
       {
-        key: `clone-head-${images[images.length - 1]}`,
-        src: `${images[images.length - 1]}`,
+        key: `clone-head-${images[length - 1]}`,
+        src: images[length - 1],
         clone: 'head',
       },
-      ...images.map((src, i) => ({ key: `img-${i}-${src}`, src })),
+      ...images.map((src, i) => ({
+        key: `img-${i}-${src}`,
+        src,
+      })),
       {
         key: `clone-tail-${images[0]}`,
-        src: `${images[0]}`,
+        src: images[0],
         clone: 'tail',
       },
     ];
   }, [images, hasLoop, length]);
 
-  const normalizeIndex = useCallback(() => {
-    if (!length) return;
+  // ================= HELPERS =================
 
-    setWithTransition(false);
-    setIndex(prev => {
-      const dot = (((prev - 1) % length) + length) % length;
+  const clamp = (val: number, max: number) =>
+    Math.max(-max, Math.min(max, val));
+
+  const clampFiniteIndex = useCallback(
+    (value: number) => {
+      if (!length) return 0;
+      return Math.max(0, Math.min(length - 1, value));
+    },
+    [length],
+  );
+
+  const getNormalizedLoopIndex = useCallback(
+    (value: number) => {
+      if (!length) return 0;
+      const dot = (((value - 1) % length) + length) % length;
       return dot + 1;
-    });
+    },
+    [length],
+  );
 
+  const cancelMoveFrame = useCallback(() => {
+    if (rafMoveRef.current !== null) {
+      cancelAnimationFrame(rafMoveRef.current);
+      rafMoveRef.current = null;
+    }
+  }, []);
+
+  const resetTransition = useCallback(() => {
+    setWithTransition(false);
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => setWithTransition(true));
+      requestAnimationFrame(() => {
+        setWithTransition(true);
+        isTransitioningRef.current = false;
+      });
     });
-  }, [length]);
+  }, []);
 
-  const startAutoplay = useCallback(() => {
-    if (!autoplayMs || !hasLoop) return;
-    if (intervalRef.current !== null) return;
-    intervalRef.current = window.setInterval(() => {
-      setIndex(prev => prev + 1);
-    }, autoplayMs);
-  }, [autoplayMs, hasLoop]);
+  const finishImmediateJump = useCallback(
+    (nextIndex: number) => {
+      setIndex(nextIndex);
+      resetTransition();
+    },
+    [resetTransition],
+  );
+
+  const normalizeIndex = useCallback(() => {
+    if (!hasLoop || !length) {
+      isTransitioningRef.current = false;
+      return;
+    }
+
+    const nextIndex = getNormalizedLoopIndex(indexRef.current);
+
+    if (nextIndex === indexRef.current) {
+      isTransitioningRef.current = false;
+      return;
+    }
+
+    finishImmediateJump(nextIndex);
+  }, [finishImmediateJump, getNormalizedLoopIndex, hasLoop, length]);
+
+  const startAnimatedTransition = useCallback(
+    (nextIndex: number) => {
+      if (!length || isTransitioningRef.current) return false;
+
+      const resolved = hasLoop
+        ? nextIndex
+        : clampFiniteIndex(nextIndex);
+
+      if (resolved === indexRef.current) return false;
+
+      isTransitioningRef.current = true;
+      setWithTransition(true);
+      setIndex(resolved);
+
+      return true;
+    },
+    [clampFiniteIndex, hasLoop, length],
+  );
+
+  // ================= AUTOPLAY =================
 
   const stopAutoplay = useCallback(() => {
     if (intervalRef.current !== null) {
-      window.clearInterval(intervalRef.current);
+      clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
   }, []);
+
+  const startAutoplay = useCallback(() => {
+    if (!autoplayMs || !hasLoop) return;
+
+    stopAutoplay();
+
+    intervalRef.current = window.setInterval(() => {
+      startAnimatedTransition(indexRef.current + 1);
+    }, autoplayMs);
+  }, [autoplayMs, hasLoop, startAnimatedTransition, stopAutoplay]);
+
+  useEffect(() => {
+    return () => {
+      cancelMoveFrame();
+      stopAutoplay();
+    };
+  }, [cancelMoveFrame, stopAutoplay]);
 
   useEffect(() => {
     if (!autoplayMs || !hasLoop) return;
@@ -82,7 +196,12 @@ export const useInfinitySlider = ({
       if (document.hidden) {
         stopAutoplay();
       } else {
-        normalizeIndex();
+        const i = indexRef.current;
+
+        if (i <= 0 || i >= slides.length - 1) {
+          normalizeIndex();
+        }
+
         startAutoplay();
       }
     };
@@ -94,103 +213,114 @@ export const useInfinitySlider = ({
       document.removeEventListener('visibilitychange', run);
       stopAutoplay();
     };
-  }, [autoplayMs, hasLoop, normalizeIndex, startAutoplay, stopAutoplay]);
+  }, [autoplayMs, hasLoop, normalizeIndex, slides.length, startAutoplay, stopAutoplay]);
+
+  // ================= TRANSITION =================
 
   const onTransitionEnd = useCallback(() => {
-    if (!hasLoop) return;
+    if (!isTransitioningRef.current) return;
 
-    if (index === slides.length - 1) {
-      setWithTransition(false);
-      setIndex(1);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setWithTransition(true));
-      });
+    if (!hasLoop) {
+      isTransitioningRef.current = false;
+      return;
     }
 
-    if (index === 0) {
-      setWithTransition(false);
-      setIndex(length);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setWithTransition(true));
-      });
+    if (index <= 0 || index >= slides.length - 1) {
+      finishImmediateJump(getNormalizedLoopIndex(index));
+      return;
     }
-  }, [hasLoop, index, length, slides.length]);
+
+    isTransitioningRef.current = false;
+  }, [finishImmediateJump, getNormalizedLoopIndex, hasLoop, index, slides.length]);
+
+  // ================= NAV =================
 
   const goTo = useCallback(
-    (dotIndex: number) => {
+    (dot: number) => {
       stopAutoplay();
-      setIndex(hasLoop ? dotIndex + 1 : dotIndex);
+      startAnimatedTransition(hasLoop ? dot + 1 : dot);
       startAutoplay();
     },
-    [hasLoop, startAutoplay, stopAutoplay],
+    [hasLoop, startAnimatedTransition, startAutoplay, stopAutoplay],
   );
 
   const nextSlide = useCallback(() => {
     stopAutoplay();
-    setIndex(prev => prev + 1);
+    startAnimatedTransition(indexRef.current + 1);
     startAutoplay();
-  }, [startAutoplay, stopAutoplay]);
+  }, [startAnimatedTransition, startAutoplay, stopAutoplay]);
 
   const prevSlide = useCallback(() => {
     stopAutoplay();
-    setIndex(prev => prev - 1);
+    startAnimatedTransition(indexRef.current - 1);
     startAutoplay();
-  }, [startAutoplay, stopAutoplay]);
+  }, [startAnimatedTransition, startAutoplay, stopAutoplay]);
 
-  const activeDot = hasLoop ? (index - 1 + length) % length : 0;
+  const activeDot = length
+    ? hasLoop
+      ? getNormalizedLoopIndex(index) - 1
+      : clampFiniteIndex(index)
+    : 0;
 
-  const [dragOffset, setDragOffset] = useState(0);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const pointerIdRef = useRef<number | null>(null);
-  const startXRef = useRef(0);
-  const startYRef = useRef(0);
-  const widthRef = useRef(1);
-  const lockRef = useRef<'x' | 'y' | null>(null);
-  const rafMoveRef = useRef<number | null>(null);
+  // ================= SWIPE =================
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
       if (e.pointerType === 'mouse' && e.button !== 0) return;
+      if (isTransitioningRef.current) return;
+
       const el = containerRef.current;
       if (!el) return;
 
       pointerIdRef.current = e.pointerId;
+
       try {
         el.setPointerCapture(e.pointerId);
       } catch {}
 
       widthRef.current = el.clientWidth || 1;
+
       startXRef.current = e.clientX;
       startYRef.current = e.clientY;
+      startTimeRef.current = performance.now();
+
       lockRef.current = null;
+      isDraggingRef.current = false;
+
+      cancelMoveFrame();
+      pendingDragOffsetRef.current = 0;
 
       setDragOffset(0);
       setWithTransition(false);
       stopAutoplay();
     },
-    [stopAutoplay],
+    [cancelMoveFrame, stopAutoplay],
   );
 
   const onPointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
-    if (pointerIdRef.current === null || e.pointerId !== pointerIdRef.current)
+    if (pointerIdRef.current === null || e.pointerId !== pointerIdRef.current) {
       return;
+    }
 
     const dx = e.clientX - startXRef.current;
     const dy = e.clientY - startYRef.current;
 
     if (!lockRef.current) {
-      const MIN_LOCK = 6;
-      if (Math.abs(dx) < MIN_LOCK && Math.abs(dy) < MIN_LOCK) return;
+      const MIN = 6;
+      if (Math.abs(dx) < MIN && Math.abs(dy) < MIN) return;
+
       lockRef.current = Math.abs(dx) >= Math.abs(dy) ? 'x' : 'y';
     }
+
     if (lockRef.current === 'y') return;
 
-    const clamped = Math.max(-widthRef.current, Math.min(widthRef.current, dx));
+    isDraggingRef.current = true;
 
-    if (rafMoveRef.current == null) {
+    pendingDragOffsetRef.current = clamp(dx, widthRef.current);
+
+    if (rafMoveRef.current === null) {
       rafMoveRef.current = requestAnimationFrame(() => {
-        setDragOffset(clamped);
-        rafMoveRef.current && cancelAnimationFrame(rafMoveRef.current);
+        setDragOffset(pendingDragOffsetRef.current);
         rafMoveRef.current = null;
       });
     }
@@ -203,41 +333,62 @@ export const useInfinitySlider = ({
       try {
         (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
       } catch {}
-      pointerIdRef.current = null;
 
       const dx = e.clientX - startXRef.current;
       const dy = e.clientY - startYRef.current;
+
+      const dt = performance.now() - startTimeRef.current;
+      const velocity = dx / dt;
+
       const thresholdPx = widthRef.current * 0.15;
 
+      const isFlick = Math.abs(velocity) > 0.5; // 🔥 velocity swipe
+      const shouldSlide =
+        Math.abs(dx) > thresholdPx || isFlick;
+
+      pointerIdRef.current = null;
+      cancelMoveFrame();
+
+      pendingDragOffsetRef.current = 0;
       setWithTransition(true);
 
-      if (Math.abs(dx) >= thresholdPx && Math.abs(dx) > Math.abs(dy)) {
-        if (dx < 0) {
-          setIndex(p => p + 1);
-        } else {
-          setIndex(p => p - 1);
-        }
+      const did =
+        shouldSlide &&
+        Math.abs(dx) > Math.abs(dy) &&
+        startAnimatedTransition(indexRef.current + (dx < 0 ? 1 : -1));
+
+      if (!did) {
+        isTransitioningRef.current = isDraggingRef.current;
       }
 
-      setDragOffset(0);
+      isDraggingRef.current = false;
 
+      setDragOffset(0);
       startAutoplay();
     },
-    [startAutoplay, setIndex],
+    [cancelMoveFrame, startAnimatedTransition, startAutoplay],
   );
 
   const onPointerCancel = useCallback(() => {
     pointerIdRef.current = null;
+    cancelMoveFrame();
+    pendingDragOffsetRef.current = 0;
+
+    isTransitioningRef.current = isDraggingRef.current;
+    isDraggingRef.current = false;
+
     setWithTransition(true);
     setDragOffset(0);
+
     startAutoplay();
-  }, [startAutoplay]);
+  }, [cancelMoveFrame, startAutoplay]);
 
   return {
     slides,
     index,
     withTransition,
     onTransitionEnd,
+
     goTo,
     nextSlide,
     prevSlide,
@@ -246,12 +397,13 @@ export const useInfinitySlider = ({
     startAutoplay,
     stopAutoplay,
 
-    // ==== SWIPE ====
     containerRef,
     onPointerDown,
     onPointerMove,
     onPointerUp,
     onPointerCancel,
+
     dragOffset,
+    isDraggingRef,
   };
 };
