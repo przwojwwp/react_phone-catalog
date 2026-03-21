@@ -1,8 +1,8 @@
 import { MutableRefObject, useCallback, useEffect, useRef } from 'react'
 
-type UserSliderAutoplayParams = {
+type UseSliderAutoplayParams = {
   autoplayMs?: number;
-  hasLoop?: boolean;
+  hasLoop: boolean;
   slidesLength: number;
   indexRef: MutableRefObject<number>;
   normalizeIndex: () => void;
@@ -16,7 +16,7 @@ export const useSliderAutoplay = ({
   indexRef,
   normalizeIndex,
   startAnimatedTransition,
-}: UserSliderAutoplayParams) => {
+}: UseSliderAutoplayParams) => {
     const intervalRef = useRef<number | null>(null);
 
     const stopAutoplay = useCallback(() => {

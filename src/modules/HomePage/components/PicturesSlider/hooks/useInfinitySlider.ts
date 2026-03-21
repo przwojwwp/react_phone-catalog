@@ -111,14 +111,23 @@ export const useInfinitySlider = ({
   }, [finishImmediateJump, getNormalizedLoopIndex, hasLoop, index, length, slides.length]);
 
   // ================= NAV =================
-  const goTo = useCallback((dot: number) => {
+  const runNavTransition = useCallback((nextIndex: number) => {
     stopAutoplay();
-    startAnimatedTransition(hasLoop ? dot + 1 : dot);
+    startAnimatedTransition(nextIndex);
     startAutoplay();
-  }, [hasLoop, startAnimatedTransition, startAutoplay, stopAutoplay]);
+  }, [startAnimatedTransition, startAutoplay, stopAutoplay]);
 
-  const nextSlide = useCallback(() => { stopAutoplay(); startAnimatedTransition(indexRef.current + 1); startAutoplay(); }, [startAnimatedTransition, startAutoplay, stopAutoplay]);
-  const prevSlide = useCallback(() => { stopAutoplay(); startAnimatedTransition(indexRef.current - 1); startAutoplay(); }, [startAnimatedTransition, startAutoplay, stopAutoplay]);
+  const goTo = useCallback((dot: number) => {
+    runNavTransition(hasLoop ? dot + 1 : dot);
+  }, [hasLoop, runNavTransition]);
+
+  const nextSlide = useCallback(() => {
+    runNavTransition(indexRef.current + 1);
+  }, [runNavTransition]);
+
+  const prevSlide = useCallback(() => {
+    runNavTransition(indexRef.current - 1);
+  }, [runNavTransition]);
 
   const activeDot = length
     ? hasLoop

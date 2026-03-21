@@ -1,5 +1,6 @@
 import {
   useCallback,
+  useEffect,
   useRef,
   useState,
   type Dispatch,
@@ -46,6 +47,10 @@ export const useSliderSwipe = ({
       rafMoveRef.current = null;
     }
   }, []);
+
+  useEffect(() => () => {
+    cancelMoveFrame();
+  }, [cancelMoveFrame]);
 
   const onPointerDown = useCallback((e: PointerEvent<HTMLDivElement>) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
@@ -139,5 +144,5 @@ export const useSliderSwipe = ({
     startAutoplay();
   }, [cancelMoveFrame, isTransitioningRef, setWithTransition, startAutoplay]);
 
-  return { onPointerDown, onPointerMove, onPointerUp, onPointerCancel, dragOffset, cancelMoveFrame, isDraggingRef };
+  return { onPointerDown, onPointerMove, onPointerUp, onPointerCancel, dragOffset, isDraggingRef };
 };
