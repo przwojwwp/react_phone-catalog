@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSliderAutoplay } from './useSliderAutoplay';
 import { useSliderSwipe } from './useSliderSwipe';
-
-type Slide = {
-  key: string;
-  src: string;
-  clone?: 'head' | 'tail';
-};
+import {
+  buildSlides,
+  clamp,
+  clampFiniteIndex,
+  getNormalizedLoopIndex,
+} from './slider.utils';
 
 type Options = {
   images: string[];
@@ -38,31 +38,7 @@ export const useInfinitySlider = ({
   }, [index]);
 
   // ================= SLIDES =================
-  const slides: Slide[] = useMemo(() => {
-    if (!length) return [];
-    if (!hasLoop) return images.map((src, i) => ({ key: `img-${i}-${src}`, src }));
-    return [
-      { key: `clone-head-${images[length - 1]}`, src: images[length - 1], clone: 'head' },
-      ...images.map((src, i) => ({ key: `img-${i}-${src}`, src })),
-      { key: `clone-tail-${images[0]}`, src: images[0], clone: 'tail' },
-    ];
-  }, [images, hasLoop, length]);
-
-  const clamp = (val: number, max: number) => Math.max(-max, Math.min(max, val));
-
-  const clampFiniteIndex = useCallback(
-    (value: number) => (length ? Math.max(0, Math.min(length - 1, value)) : 0),
-    [length],
-  );
-
-  const getNormalizedLoopIndex = useCallback(
-    (value: number) => {
-      if (!length) return 0;
-      const dot = (((value - 1) % length) + length) % length;
-      return dot + 1;
-    },
-    [length],
-  );
+  const slides = useMemo(() => buildSlides(images, hasLoop), [images, hasLoop]);
 
   const resetTransition = useCallback(() => {
     setWithTransition(false);
@@ -87,18 +63,23 @@ export const useInfinitySlider = ({
       isTransitioningRef.current = false;
       return;
     }
-    const nextIndex = getNormalizedLoopIndex(indexRef.current);
+
+    const nextIndex = getNormalizedLoopIndex(indexRef.current, length);
+
     if (nextIndex === indexRef.current) {
       isTransitioningRef.current = false;
       return;
     }
+
     finishImmediateJump(nextIndex);
   }, [finishImmediateJump, getNormalizedLoopIndex, hasLoop, length]);
 
   const startAnimatedTransition = useCallback(
     (nextIndex: number) => {
       if (!length || isTransitioningRef.current) return false;
-      const resolved = hasLoop ? nextIndex : clampFiniteIndex(nextIndex);
+
+      const resolved = hasLoop ? nextIndex : clampFiniteIndex(nextIndex, length);
+
       if (resolved === indexRef.current) return false;
       isTransitioningRef.current = true;
       setWithTransition(true);
@@ -122,9 +103,12 @@ export const useInfinitySlider = ({
   const onTransitionEnd = useCallback(() => {
     if (!isTransitioningRef.current) return;
     if (!hasLoop) { isTransitioningRef.current = false; return; }
-    if (index <= 0 || index >= slides.length - 1) finishImmediateJump(getNormalizedLoopIndex(index));
+
+    if (index <= 0 || index >= slides.length - 1) {
+      finishImmediateJump(getNormalizedLoopIndex(index, length));
+    }
     else isTransitioningRef.current = false;
-  }, [finishImmediateJump, getNormalizedLoopIndex, hasLoop, index, slides.length]);
+  }, [finishImmediateJump, getNormalizedLoopIndex, hasLoop, index, length, slides.length]);
 
   // ================= NAV =================
   const goTo = useCallback((dot: number) => {
@@ -136,7 +120,11 @@ export const useInfinitySlider = ({
   const nextSlide = useCallback(() => { stopAutoplay(); startAnimatedTransition(indexRef.current + 1); startAutoplay(); }, [startAnimatedTransition, startAutoplay, stopAutoplay]);
   const prevSlide = useCallback(() => { stopAutoplay(); startAnimatedTransition(indexRef.current - 1); startAutoplay(); }, [startAnimatedTransition, startAutoplay, stopAutoplay]);
 
-  const activeDot = length ? (hasLoop ? getNormalizedLoopIndex(index) - 1 : clampFiniteIndex(index)) : 0;
+  const activeDot = length
+    ? hasLoop
+      ? getNormalizedLoopIndex(index, length) - 1
+      : clampFiniteIndex(index, length)
+    : 0;
 
   // ================= SWIPE =================
   const { onPointerDown, onPointerMove, onPointerUp, onPointerCancel, dragOffset, isDraggingRef } = useSliderSwipe({
