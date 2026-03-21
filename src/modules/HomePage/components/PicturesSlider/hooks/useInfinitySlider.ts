@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useSliderAutoplay } from './useSliderAutoplay';
 
 type Slide = {
   key: string;
@@ -28,7 +29,6 @@ export const useInfinitySlider = ({
   const [withTransition, setWithTransition] = useState(true);
   const [dragOffset, setDragOffset] = useState(0);
 
-  const intervalRef = useRef<number | null>(null);
   const rafMoveRef = useRef<number | null>(null);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -128,39 +128,15 @@ export const useInfinitySlider = ({
   );
 
   // ================= AUTOPLAY =================
-  const stopAutoplay = useCallback(() => {
-    if (intervalRef.current !== null) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  }, []);
 
-  const startAutoplay = useCallback(() => {
-    if (!autoplayMs || !hasLoop) return;
-    stopAutoplay();
-    intervalRef.current = window.setInterval(() => {
-      startAnimatedTransition(indexRef.current + 1);
-    }, autoplayMs);
-  }, [autoplayMs, hasLoop, startAnimatedTransition, stopAutoplay]);
-
-  useEffect(() => () => { cancelMoveFrame(); stopAutoplay(); }, [cancelMoveFrame, stopAutoplay]);
-
-  useEffect(() => {
-    if (!autoplayMs || !hasLoop) return;
-    const run = () => {
-      if (document.hidden) stopAutoplay();
-      else {
-        if (indexRef.current <= 0 || indexRef.current >= slides.length - 1) normalizeIndex();
-        startAutoplay();
-      }
-    };
-    run();
-    document.addEventListener('visibilitychange', run);
-    return () => {
-      document.removeEventListener('visibilitychange', run);
-      stopAutoplay();
-    };
-  }, [autoplayMs, hasLoop, normalizeIndex, slides.length, startAutoplay, stopAutoplay]);
+  const {startAutoplay, stopAutoplay} = useSliderAutoplay({
+    autoplayMs,
+    hasLoop,
+    slidesLength: slides.length,
+    indexRef,
+    normalizeIndex,
+    startAnimatedTransition,
+  });
 
   // ================= TRANSITION =================
   const onTransitionEnd = useCallback(() => {
