@@ -1,74 +1,48 @@
 import styles from './ProductCard.module.scss';
+import HeartIcon from '@/assets/icons/heart.svg?react';
 
 export const ProductCard = ({ products }: { products: Product[] }) => {
   return (
     <ul className={styles.list}>
       {products.slice(0, 5).map(product => (
-        <li
-          key={product.id}
-          className={styles.item}
-          style={{
-            height: 439,
-            width: 212,
-            listStyle: 'none',
-            padding: 32,
-            overflow: 'hidden',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexDirection: 'column',
-            border: '1px solid ${color-light-border}',
-            gap: 8,
-            borderRadius: 8,
-          }}
-        >
+        <li key={product.id} className={styles.item}>
           <img
             src={`${product.image}`}
             alt={product.name}
-            style={{
-              width: 148,
-              height: 129,
-              objectFit: 'contain',
-            }}
+            className={styles.image}
           />
+          <h3 className={styles.name}>{product.name}</h3>
 
-          <h3
-            style={{
-              fontFamily: 'Mont',
-              fontWeight: 400,
-              fontSize: 14,
-              lineHeight: '21px',
-              letterSpacing: 0,
-            }}
-          >
-            {product.name}
-          </h3>
+          <p className={styles.price}>${product.price}</p>
 
-          <p>${product.price}</p>
+          <hr className={styles.divider} aria-hidden="true" />
 
           <dl className={styles.specs}>
-            <div>
+            <div className={styles.spec}>
               <dt>Screen</dt>
               <dd>{product.screen}</dd>
             </div>
 
-            <div>
+            <div className={styles.spec}>
               <dt>Capacity</dt>
               <dd>{product.capacity}</dd>
             </div>
 
-            <div>
+            <div className={styles.spec}>
               <dt>RAM</dt>
               <dd>{product.ram}</dd>
             </div>
           </dl>
           <footer className={styles.actions}>
-            <button type="button">Add to cart</button>
+            <button type="button" className={styles['add-to-cart-button']}>
+              Add to cart
+            </button>
             <button
               type="button"
               aria-label={`Add ${product.name} to favourites`}
+              className={styles['favourite-button']}
             >
-              ♡
+              <HeartIcon />
             </button>
           </footer>
         </li>

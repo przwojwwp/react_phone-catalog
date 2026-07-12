@@ -22,7 +22,9 @@ export const HomePage = () => {
     fetchProducts();
   }, []);
 
-  const brandNewModels = [...products].sort((a, b) => b.year - a.year);
+  const brandNewModels = [...products].sort(
+    (a, b) => b.year - a.year || a.price - b.price,
+  );
 
   return (
     <>
