@@ -1,0 +1,36 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  color: $color-primary;
+  background: transparent;
+
+  border: 1px solid $color-icons;
+  border-radius: $radius-round;
+
+  cursor: pointer;
+
+  transition:
+    color $animation-duration-hover ease,
+    border-color $animation-duration-hover ease;
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 4px;
+  }
+
+  &:disabled {
+    color: $color-icons;
+    border-color: $color-icons;
+    cursor: default;
+  }
+}

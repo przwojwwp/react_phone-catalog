@@ -19,12 +19,24 @@
   padding-inline: $padding-inline-mobile;
   box-sizing: content-box;
 
+  > section {
+    margin-top: $section-gap-mobile;
+  }
+
   @include respond(tablet) {
     padding-inline: $padding-inline-tablet;
+
+    > section + section {
+      margin-top: $section-gap-tablet;
+    }
   }
 
   @include respond(desktop) {
     padding-inline: $padding-inline-desktop;
+
+    > section + section {
+      margin-top: $section-gap-desktop;
+    }
   }
 }
 
