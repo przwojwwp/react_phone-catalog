@@ -1,4 +1,4 @@
-import BackToTopIcon from '@/assets/icons/arrow-up.svg?react';
+import { ArrowIcon } from '@/shared/components/ArrowIcon';
 
 import styles from './BackToTop.module.scss';
 
@@ -15,12 +15,11 @@ export const BackToTop = () => {
       className={styles['back-to-top']}
       type="button"
       onClick={handleClick}
-      aria-label="Back to top"
     >
       <span className={styles.label}>Back to top</span>
 
       <span className={styles['icon-container']} aria-hidden="true">
-        <BackToTopIcon />
+        <ArrowIcon direction="up" />
       </span>
     </button>
   );

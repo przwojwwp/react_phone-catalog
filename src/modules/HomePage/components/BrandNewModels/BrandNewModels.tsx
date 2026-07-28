@@ -10,14 +10,7 @@ export const BrandNewModels = ({ products }: { products: Product[] }) => {
           Brand new <br />
           models
         </h2>
-        <div>
-          {/* <button type="button" aria-label="Previous">
-            <LeftIcon />
-          </button>
-          <button type="button" aria-label="Next">
-            <NextIcon />
-          </button> */}
-        </div>
+        <div aria-hidden="true" />
       </header>
       <ProductCard products={products} />
     </section>
