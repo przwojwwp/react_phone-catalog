@@ -13,7 +13,6 @@
   .label {
     @include small-text;
 
-    line-height: 100%;
     color: $color-secondary;
 
     margin-right: 16px;
@@ -30,7 +29,7 @@
     width: 32px;
     height: 32px;
     border: 1px solid $color-icons;
-    border-radius: 100%;
+    border-radius: $radius-round;
 
     transition: border $animation-duration-hover ease;
 

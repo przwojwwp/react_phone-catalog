@@ -18,16 +18,30 @@ $color-background-transparent: transparent;
 // ==== LAYERS ====
 $z-base: 0;
 $z-header: 100;
+$z-overlay: 200;
 
 // ==== ANIMATION ====
 $animation-duration-menu: 0.3s;
 $animation-duration-hover: 0.4s;
 $animation-duration-picture-slider: 0.7s;
+$animation-duration-slider-dot: 0.3s;
+
+// ==== SHADOWS ====
+$shadow-border-top: 0px -1px 0px 0px $color-light-border;
+$shadow-border-bottom: 0px 1px 0px 0px $color-light-border;
+$shadow-border-left: -1px 0px 0px 0px $color-light-border;
+$shadow-hover-elevation: 0px 3px 13px 0px #17203166;
+
+// ==== RADIUS ====
+$radius-sm: 2px;
+$radius-md: 8px;
+$radius-round: 50%;
 
 // ==== FONT ====
 $font-family: 'Mont', sans-serif;
 
 // ==== FONT WEIGHT ====
+$font-weight-regular: 400;
 $font-weight-medium: 600;
 $font-weight-semibold: 700;
 $font-weight-bold: 800;

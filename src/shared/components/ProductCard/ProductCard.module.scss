@@ -9,7 +9,7 @@
   flex-direction: column;
   border: 1px solid $color-light-border;
   gap: 8px;
-  border-radius: 8px;
+  border-radius: $radius-md;
 }
 
 .image {
@@ -23,7 +23,6 @@
   @include body-text;
 }
 
-// Desktop & Tablet/H3
 .price {
   @include product-price;
 }
@@ -41,8 +40,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-
-  line-height: 100%;
 }
 
 .spec {
@@ -71,13 +68,13 @@
 
   background-color: $color-accent;
   color: $color-white;
-  border-radius: 8px;
+  border-radius: $radius-md;
 
   @include button-text;
   text-align: center;
 
   &:hover {
-    box-shadow: 0px 3px 13px 0px #17203166;
+    box-shadow: $shadow-hover-elevation;
   }
 }
 
@@ -94,7 +91,7 @@
 
   background-color: $color-white;
   border: 1px solid $color-light-border;
-  border-radius: 50%;
+  border-radius: $radius-round;
 
   svg {
     display: block;

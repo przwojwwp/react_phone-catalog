@@ -36,11 +36,14 @@ export const PicturesSlider = () => {
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerCancel}
-      style={{ touchAction: 'pan-y', overscrollBehaviorX: 'contain' }}
     >
       <div
-        className={cn(styles['slider-track'], { [styles['no-transition']]: !withTransition })}
-        style={{ transform: `translateX(calc(-${index * 100}% + ${dragOffset}px))` }}
+        className={cn(styles['slider-track'], {
+          [styles['no-transition']]: !withTransition,
+        })}
+        style={{
+          transform: `translateX(calc(-${index * 100}% + ${dragOffset}px))`,
+        }}
         onTransitionEnd={onTransitionEnd}
       >
         {slides.map((slide, i) => (

@@ -4,6 +4,7 @@
   overflow-x: hidden;
   margin-inline: -16px;
   touch-action: pan-y;
+  overscroll-behavior-x: contain;
   user-select: none;
 
   @include respond(tablet) {
@@ -60,12 +61,12 @@
     .dot {
       width: 14px;
       height: 4px;
-      border-radius: 2px;
+      border-radius: $radius-sm;
       background-color: $color-light-border;
       border: none;
       transition:
-        background-color 0.3s ease,
-        width 0.3s ease;
+        background-color $animation-duration-slider-dot ease,
+        width $animation-duration-slider-dot ease;
       cursor: pointer;
 
       &.active {
