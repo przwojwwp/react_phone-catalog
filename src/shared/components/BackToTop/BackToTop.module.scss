@@ -1,50 +1,62 @@
 .back-to-top {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 16px;
 
-  border: none;
+  padding: 0;
+  border: 0;
 
-  background-color: $color-background-transparent;
+  color: $color-secondary;
+  background: transparent;
 
   font-family: $font-family;
 
   cursor: pointer;
 
+  transition: color $animation-duration-hover ease;
+
   .label {
     @include small-text;
 
-    color: $color-secondary;
-
-    margin-right: 16px;
+    color: inherit;
     text-align: right;
-
-    transition: color $animation-duration-hover ease;
   }
 
   .icon-container {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
     width: 32px;
     height: 32px;
+
+    flex-shrink: 0;
+
+    color: $color-primary;
+
     border: 1px solid $color-icons;
     border-radius: $radius-round;
 
-    transition: border $animation-duration-hover ease;
+    transition: border-color $animation-duration-hover ease;
 
     svg {
-      stroke: $color-primary;
+      width: 16px;
+      height: 16px;
+
+      fill: currentColor;
     }
   }
 
   &:hover {
-    .label {
-      color: $color-primary;
-    }
+    color: $color-primary;
 
     .icon-container {
       border-color: $color-primary;
     }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 4px;
   }
 }
