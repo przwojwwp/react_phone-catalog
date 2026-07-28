@@ -28,7 +28,7 @@ $animation-duration-picture-slider: 0.7s;
 $font-family: 'Mont', sans-serif;
 
 // ==== FONT WEIGHT ====
-$font-weight-regular: 400;
+$font-weight-medium: 600;
 $font-weight-semibold: 700;
 $font-weight-bold: 800;
 
@@ -43,15 +43,15 @@ $h1-line-height-mobile: 41px;
 $h1-letter-spacing-mobile: -0.01em;
 
 $h2-size-mobile: 22px;
-$h2-line-height-mobile: 31px;
+$h2-line-height-mobile: 140%;
 $h2-letter-spacing-mobile: 0;
 
 $h3-size-mobile: 20px;
-$h3-line-height-mobile: 26px;
+$h3-line-height-mobile: 100%;
 $h3-letter-spacing-mobile: 0;
 
 $h4-size-mobile: 16px;
-$h4-line-height-mobile: 20px;
+$h4-line-height-mobile: 100%;
 $h4-letter-spacing-mobile: 0;
 
 // ==== TYPOGRAPHY - TABLET & DESKTOP ====
@@ -64,11 +64,11 @@ $h2-line-height-tablet-desktop: 41px;
 $h2-letter-spacing-tablet-desktop: -0.01em;
 
 $h3-size-tablet-desktop: 22px;
-$h3-line-height-tablet-desktop: 31px;
+$h3-line-height-tablet-desktop: 140%;
 $h3-letter-spacing-tablet-desktop: 0;
 
 $h4-size-tablet-desktop: 20px;
-$h4-line-height-tablet-desktop: 26px;
+$h4-line-height-tablet-desktop: 100%;
 $h4-letter-spacing-tablet-desktop: 0;
 
 // ==== TYPOGRAPHY - MISC ====
@@ -86,5 +86,5 @@ $body-text-line-height: 21px;
 $body-text-spacing: 0;
 
 $small-text-size: 12px;
-$small-text-line-height: 15px;
+$small-text-line-height: 100%;
 $small-text-spacing: 0;

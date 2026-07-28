@@ -37,18 +37,20 @@
 }
 
 @mixin h3 {
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-semibold;
   font-size: $h3-size-mobile;
   line-height: $h3-line-height-mobile;
   letter-spacing: $h3-letter-spacing-mobile;
 
   @include respond(tablet) {
+    font-weight: $font-weight-bold;
     font-size: $h3-size-tablet-desktop;
     line-height: $h3-line-height-tablet-desktop;
     letter-spacing: $h3-letter-spacing-tablet-desktop;
   }
 
   @include respond(desktop) {
+    font-weight: $font-weight-bold;
     font-size: $h3-size-tablet-desktop;
     line-height: $h3-line-height-tablet-desktop;
     letter-spacing: $h3-letter-spacing-tablet-desktop;
@@ -86,16 +88,26 @@
   font-weight: $font-weight-semibold;
   font-size: $button-text-size;
   line-height: $button-text-line-height;
+  letter-spacing: $button-text-spacing;
 }
 
 @mixin body-text {
-  font-weight: $font-weight-regular;
+  font-weight: $font-weight-medium;
   font-size: $body-text-size;
   line-height: $body-text-line-height;
+  letter-spacing: $body-text-spacing;
 }
 
 @mixin small-text {
   font-weight: $font-weight-semibold;
   font-size: $small-text-size;
   line-height: $small-text-line-height;
+  letter-spacing: $small-text-spacing;
+}
+
+@mixin product-price {
+  font-weight: $font-weight-bold;
+  font-size: $h3-size-tablet-desktop;
+  line-height: $h3-line-height-tablet-desktop;
+  letter-spacing: $h3-letter-spacing-tablet-desktop;
 }
