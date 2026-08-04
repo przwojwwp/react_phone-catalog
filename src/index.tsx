@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { HashRouter as Router } from 'react-router-dom';
-import { MobileMenuProvider } from './shared/context/MobileMenuContext';
+import { MobileMenuProvider } from './modules/shared/context/MobileMenuContext';
 
 import './styles/main.scss';
 

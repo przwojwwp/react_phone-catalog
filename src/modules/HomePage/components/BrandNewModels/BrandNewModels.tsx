@@ -1,5 +1,5 @@
-import { ArrowButton } from '@/shared/components/ArrowButton';
-import { ProductCard } from '@/shared/components/ProductCard/ProductCard';
+import { ArrowButton } from '@/modules/shared/components/ArrowButton';
+import { ProductCard } from '@/modules/shared/components/ProductCard/ProductCard';
 
 import styles from './BrandNewModels.module.scss';
 

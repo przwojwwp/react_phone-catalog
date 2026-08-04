@@ -1,4 +1,4 @@
-import { ArrowIcon } from '@/shared/components/ArrowIcon';
+import { ArrowIcon } from '@/modules/shared/components/ArrowIcon';
 
 import styles from './BackToTop.module.scss';
 
