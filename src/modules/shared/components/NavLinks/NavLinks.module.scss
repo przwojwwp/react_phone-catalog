@@ -1,0 +1,55 @@
+.nav-item {
+  @include uppercase;
+
+  position: relative;
+  display: block;
+
+  padding: 8px 0;
+
+  text-decoration: none;
+  color: $color-secondary;
+
+  transition:
+    color $animation-duration-hover ease,
+    border-color $animation-duration-hover ease;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 2px;
+    background-color: $color-primary;
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform $animation-duration-hover ease;
+  }
+
+  &:global(.active) {
+    color: $color-primary;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@include respond(tablet) {
+  .nav-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    &::after {
+      height: 3px;
+    }
+  }
+}

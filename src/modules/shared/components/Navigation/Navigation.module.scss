@@ -1,28 +1,14 @@
 .nav {
-  // Not rendered in DOM on mobile, so no need for display:none
   display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 100%;
 
   @include respond(tablet) {
-    width: 329px;
     gap: 32px;
   }
 
   @include respond(desktop) {
-    width: 425px;
     gap: 64px;
   }
-
-  a {
-    text-decoration: none;
-    color: $color-secondary;
-
-    &.active {
-      color: $color-primary;
-      border-bottom: 2px solid $color-primary;
-    }
-  }
-}
-
-.nav-item {
-  @include uppercase;
 }

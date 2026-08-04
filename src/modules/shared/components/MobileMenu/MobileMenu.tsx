@@ -34,7 +34,7 @@ export const MobileMenu = () => {
       </div>
 
       <div className={styles['mobile-navigation']}>
-        <NavLinks className={styles['nav-item']} />
+        <NavLinks />
       </div>
       <div className={styles['menu-actions']}>
         <UtilityIcons className={styles['utility-icon']} />

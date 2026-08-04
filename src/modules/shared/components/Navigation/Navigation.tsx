@@ -9,7 +9,7 @@ export const Navigation = () => {
 
   return (
     <nav className={styles.nav}>
-      <NavLinks className={styles['nav-item']} />
+      <NavLinks />
     </nav>
   );
 };
