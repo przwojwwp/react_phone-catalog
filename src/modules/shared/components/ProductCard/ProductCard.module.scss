@@ -1,0 +1,108 @@
+.list {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.item {
+  height: 439px;
+  width: 212px;
+  list-style: none;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 1px solid $color-light-border;
+  gap: 8px;
+  border-radius: $radius-md;
+}
+
+.image {
+  width: 148px;
+  height: 129px;
+  object-fit: contain;
+}
+
+.name {
+  margin-top: 16px;
+  @include body-text;
+}
+
+.price {
+  @include product-price;
+}
+
+.divider {
+  align-self: stretch;
+  border-top: 1px solid $color-light-border;
+  height: 0;
+  flex-shrink: 0;
+}
+
+.specs {
+  @include small-text;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spec dt {
+  color: $color-secondary;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.add-to-cart-button {
+  height: 40px;
+  min-width: 0;
+  flex: 1 1 auto;
+  border: none;
+  cursor: pointer;
+
+  background-color: $color-accent;
+  color: $color-white;
+  border-radius: $radius-md;
+
+  @include button-text;
+  text-align: center;
+
+  &:hover {
+    box-shadow: $shadow-hover-elevation;
+  }
+}
+
+.favourite-button {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $color-white;
+  border: 1px solid $color-light-border;
+  border-radius: $radius-round;
+
+  svg {
+    display: block;
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
