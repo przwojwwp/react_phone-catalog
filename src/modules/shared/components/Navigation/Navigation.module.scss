@@ -1,10 +1,11 @@
 .nav {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 24px;
   height: 100%;
 
   @include respond(tablet) {
+    display: flex;
     gap: 32px;
   }
 

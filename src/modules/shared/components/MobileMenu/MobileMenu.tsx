@@ -34,10 +34,10 @@ export const MobileMenu = () => {
       </div>
 
       <div className={styles['mobile-navigation']}>
-        <NavLinks />
+        <NavLinks onItemClick={close} />
       </div>
       <div className={styles['menu-actions']}>
-        <UtilityIcons className={styles['utility-icon']} />
+        <UtilityIcons className={styles['utility-icon']} onItemClick={close} />
       </div>
     </div>
   );
