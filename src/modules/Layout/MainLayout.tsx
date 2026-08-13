@@ -4,12 +4,14 @@ import { Header } from '../shared/components/Header';
 import { MobileMenu } from '../shared/components/MobileMenu';
 import { Footer } from '../shared/components/Footer';
 
+import styles from './MainLayout.module.scss';
+
 export const MainLayout = () => {
   return (
-    <div className="App">
+    <div className={styles.App}>
       <MobileMenu />
       <Header />
-      <main className="main-content">
+      <main className={styles['main-content']}>
         <Outlet />
       </main>
       <Footer />
