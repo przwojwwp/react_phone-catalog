@@ -22,11 +22,7 @@
     display: none;
   }
 
-  @media (hover: hover) {
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
+  @include hover-scale;
 }
 
 .icon {
@@ -56,9 +52,5 @@
     transition: transform $animation-duration-hover ease;
   }
 
-  @media (hover: hover) {
-    &:hover svg {
-      transform: scale(1.1);
-    }
-  }
+  @include hover-scale;
 }

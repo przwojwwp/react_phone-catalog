@@ -9,3 +9,17 @@
     }
   }
 }
+
+@mixin hover-only {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin hover-scale($scale: 1.1) {
+  @include hover-only {
+    &:hover {
+      transform: scale($scale);
+    }
+  }
+}

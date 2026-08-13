@@ -13,8 +13,10 @@
     color $animation-duration-hover ease,
     border-color $animation-duration-hover ease;
 
-  &:hover {
-    color: $color-primary;
+  @include hover-only {
+    &:hover {
+      color: $color-primary;
+    }
   }
 
   &::after {

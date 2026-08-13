@@ -78,8 +78,10 @@
   @include button-text;
   text-align: center;
 
-  &:hover {
-    box-shadow: $shadow-hover-elevation;
+  @include hover-only {
+    &:hover {
+      box-shadow: $shadow-hover-elevation;
+    }
   }
 }
 
@@ -102,7 +104,9 @@
     display: block;
   }
 
-  &:hover {
-    border-color: $color-primary;
+  @include hover-only {
+    &:hover {
+      border-color: $color-primary;
+    }
   }
 }

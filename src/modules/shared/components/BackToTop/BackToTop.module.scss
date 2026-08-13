@@ -40,11 +40,13 @@
     transition: border-color $animation-duration-hover ease;
   }
 
-  &:hover {
-    color: $color-primary;
+  @include hover-only {
+    &:hover {
+      color: $color-primary;
 
-    .icon-container {
-      border-color: $color-primary;
+      .icon-container {
+        border-color: $color-primary;
+      }
     }
   }
 }
