@@ -1,7 +1,14 @@
 .not-found-page {
   display: flex;
-  flex: 1;
   flex-direction: column;
 
   text-align: center;
+}
+
+.not-found-page-image {
+  width: 50%;
+  max-width: 600px;
+  margin-inline: auto;
+
+  object-fit: contain;
 }

@@ -4,11 +4,11 @@ export const NotFoundPage = () => {
   return (
     <section className={styles['not-found-page']}>
       <h1>Page not found</h1>
-      {/* <img
-        className={styles['page-not-found-image']}
+      <img
+        className={styles['not-found-page-image']}
         src="public/img/page-not-found.png"
         alt="Page not found"
-      /> */}
+      />
     </section>
   );
 };

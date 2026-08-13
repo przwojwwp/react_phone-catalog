@@ -6,6 +6,8 @@
 }
 
 .main-content {
+  display: flex;
+  flex-direction: column;
   width: calc(100% - 2 * $padding-inline-mobile);
   max-width: $grid-container-width-desktop;
   margin-inline: auto;
