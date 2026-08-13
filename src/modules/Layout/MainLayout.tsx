@@ -8,7 +8,7 @@ import styles from './MainLayout.module.scss';
 
 export const MainLayout = () => {
   return (
-    <div className={styles.App}>
+    <div className={styles.app}>
       <MobileMenu />
       <Header />
       <main className={styles['main-content']}>

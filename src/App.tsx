@@ -5,8 +5,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { MainLayout } from './modules/Layout/MainLayout';
 import { NotFoundPage } from './modules/NotFoundPage';
 
-import './App.scss';
-
 export const App = () => {
   return (
     <Routes>
