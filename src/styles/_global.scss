@@ -28,3 +28,15 @@ h3 {
 h4 {
   @include h4;
 }
+
+a,
+button,
+input,
+select {
+  transition:
+    color $animation-duration-hover ease,
+    background-color $animation-duration-hover ease,
+    border-color $animation-duration-hover ease,
+    box-shadow $animation-duration-hover ease,
+    transform $animation-duration-hover ease;
+}

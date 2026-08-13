@@ -15,10 +15,6 @@
 
   cursor: pointer;
 
-  transition:
-    color $animation-duration-hover ease,
-    border-color $animation-duration-hover ease;
-
   &:hover:not(:disabled) {
     border-color: $color-primary;
   }
