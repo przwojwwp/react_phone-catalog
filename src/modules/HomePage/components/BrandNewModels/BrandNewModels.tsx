@@ -1,5 +1,5 @@
 import { ArrowButton } from '@/modules/shared/components/ArrowButton';
-import { ProductCard } from '@/modules/shared/components/ProductCard/ProductCard';
+import { ProductList } from '@/modules/shared/components/ProductList/ProductList';
 
 import styles from './BrandNewModels.module.scss';
 
@@ -23,7 +23,7 @@ export const BrandNewModels = ({ products }: { products: Product[] }) => {
         </div>
       </header>
 
-      <ProductCard products={products} />
+      <ProductList products={products} />
     </section>
   );
 };
