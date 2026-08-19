@@ -9,12 +9,6 @@
     line-height: $h1-line-height-tablet-desktop;
     letter-spacing: $h1-letter-spacing-tablet-desktop;
   }
-
-  @include respond(desktop) {
-    font-size: $h1-size-tablet-desktop;
-    line-height: $h1-line-height-tablet-desktop;
-    letter-spacing: $h1-letter-spacing-tablet-desktop;
-  }
 }
 
 @mixin h2 {
@@ -24,12 +18,6 @@
   letter-spacing: $h2-letter-spacing-mobile;
 
   @include respond(tablet) {
-    font-size: $h2-size-tablet-desktop;
-    line-height: $h2-line-height-tablet-desktop;
-    letter-spacing: $h2-letter-spacing-tablet-desktop;
-  }
-
-  @include respond(desktop) {
     font-size: $h2-size-tablet-desktop;
     line-height: $h2-line-height-tablet-desktop;
     letter-spacing: $h2-letter-spacing-tablet-desktop;
@@ -48,13 +36,6 @@
     line-height: $h3-line-height-tablet-desktop;
     letter-spacing: $h3-letter-spacing-tablet-desktop;
   }
-
-  @include respond(desktop) {
-    font-weight: $font-weight-bold;
-    font-size: $h3-size-tablet-desktop;
-    line-height: $h3-line-height-tablet-desktop;
-    letter-spacing: $h3-letter-spacing-tablet-desktop;
-  }
 }
 
 @mixin h4 {
@@ -64,12 +45,6 @@
   letter-spacing: $h4-letter-spacing-mobile;
 
   @include respond(tablet) {
-    font-size: $h4-size-tablet-desktop;
-    line-height: $h4-line-height-tablet-desktop;
-    letter-spacing: $h4-letter-spacing-tablet-desktop;
-  }
-
-  @include respond(desktop) {
     font-size: $h4-size-tablet-desktop;
     line-height: $h4-line-height-tablet-desktop;
     letter-spacing: $h4-letter-spacing-tablet-desktop;

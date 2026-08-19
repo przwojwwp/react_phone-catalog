@@ -5,7 +5,7 @@ import styles from './BrandNewModels.module.scss';
 
 export const BrandNewModels = ({ products }: { products: Product[] }) => {
   return (
-    <section className={styles.brandNewModels}>
+    <section>
       <header className={styles['section-header']}>
         <h2>
           Brand new <br />

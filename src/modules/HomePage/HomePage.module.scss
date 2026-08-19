@@ -1,9 +1,7 @@
 .title {
-  @include h1;
+  margin: 24px auto;
 
-  & {
-    margin: 24px auto;
-  }
+  @include h1;
 
   @include respond(tablet) {
     margin: 32px auto;

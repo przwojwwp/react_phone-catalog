@@ -36,15 +36,6 @@
 
   box-shadow: $shadow-border-left;
 
-  @include respond(tablet) {
-    display: flex;
-  }
-
-  @include respond(desktop) {
-    width: 64px;
-    height: 64px;
-  }
-
   svg {
     width: 16px;
     height: 16px;
@@ -53,4 +44,13 @@
   }
 
   @include hover-scale;
+
+  @include respond(tablet) {
+    display: flex;
+  }
+
+  @include respond(desktop) {
+    width: 64px;
+    height: 64px;
+  }
 }

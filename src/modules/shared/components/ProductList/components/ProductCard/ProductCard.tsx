@@ -1,14 +1,17 @@
+import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import HeartIcon from '@/assets/icons/heart.svg?react';
 
 export const ProductCard = ({ product }: { product: Product }) => {
   return (
     <li key={product.id} className={styles.item}>
-      <img
-        src={`${product.image}`}
-        alt={product.name}
-        className={styles.image}
-      />
+      <Link to={`/products/${product.itemId}`}>
+        <img
+          src={`${product.image}`}
+          alt={product.name}
+          className={styles.image}
+        />
+      </Link>
       <h3 className={styles.name}>{product.name}</h3>
 
       <p className={styles.price}>${product.price}</p>

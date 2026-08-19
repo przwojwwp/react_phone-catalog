@@ -12,9 +12,12 @@
 }
 
 .image {
+  display: block;
   width: 148px;
   height: 129px;
   object-fit: contain;
+
+  @include hover-scale;
 }
 
 .name {
@@ -46,10 +49,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
 
-.spec dt {
-  color: $color-secondary;
+  dt {
+    color: $color-secondary;
+  }
 }
 
 .actions {

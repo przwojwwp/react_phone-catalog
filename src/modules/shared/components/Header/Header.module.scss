@@ -13,10 +13,6 @@
   background-color: $color-white;
   box-shadow: $shadow-border-bottom;
 
-  @include respond(tablet) {
-    height: 48px;
-  }
-
   @include respond(desktop) {
     height: 64px;
   }

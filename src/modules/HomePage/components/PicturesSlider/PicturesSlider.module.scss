@@ -10,37 +10,29 @@
   @include respond(tablet) {
     margin-inline: 0;
   }
+}
 
-  @include respond(desktop) {
-    margin-inline: 0;
-  }
+.slider-track {
+  display: flex;
+  aspect-ratio: 1 / 1;
+  transition: transform $animation-duration-picture-slider ease;
+  will-change: transform;
 
-  .slider-track {
-    display: flex;
-    aspect-ratio: 1 / 1;
-    transition: transform $animation-duration-picture-slider ease;
-    will-change: transform;
-
-    &.no-transition {
-      transition: none !important;
-    }
-  }
-
-  .slide {
-    min-width: 100%;
-    min-height: 100%;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+  &.no-transition {
+    transition: none !important;
   }
 }
 
-.no-transition {
-  transition: none;
+.slide {
+  min-width: 100%;
+  min-height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 .dots {
@@ -50,28 +42,28 @@
   transform: translateX(-50%);
   display: flex;
   gap: 4px;
+}
 
-  .dot-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 24px;
-    height: 24px;
+.dot-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
 
-    .dot {
-      width: 14px;
-      height: 4px;
-      border-radius: $radius-sm;
-      background-color: $color-light-border;
-      border: none;
-      transition:
-        background-color $animation-duration-slider-dot ease,
-        width $animation-duration-slider-dot ease;
-      cursor: pointer;
+.dot {
+  width: 14px;
+  height: 4px;
+  border-radius: $radius-sm;
+  background-color: $color-light-border;
+  border: none;
+  transition:
+    background-color $animation-duration-slider-dot ease,
+    width $animation-duration-slider-dot ease;
+  cursor: pointer;
 
-      &.active {
-        background-color: $color-primary;
-      }
-    }
+  &.active {
+    background-color: $color-primary;
   }
 }

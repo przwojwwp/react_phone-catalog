@@ -3,7 +3,6 @@
 
   position: relative;
   display: block;
-
   padding: 8px 0;
 
   text-decoration: none;
@@ -12,12 +11,6 @@
   transition:
     color $animation-duration-hover ease,
     border-color $animation-duration-hover ease;
-
-  @include hover-only {
-    &:hover {
-      color: $color-primary;
-    }
-  }
 
   &::after {
     content: '';
@@ -34,6 +27,12 @@
     transition: transform $animation-duration-hover ease;
   }
 
+  @include hover-only {
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
   &:global(.active) {
     color: $color-primary;
 
@@ -41,10 +40,8 @@
       transform: scaleX(1);
     }
   }
-}
 
-@include respond(tablet) {
-  .nav-item {
+  @include respond(tablet) {
     height: 100%;
     display: flex;
     align-items: center;
