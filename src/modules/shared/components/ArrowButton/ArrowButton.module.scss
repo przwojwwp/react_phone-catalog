@@ -16,7 +16,9 @@
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    border-color: $color-primary;
+    @include hover-only {
+      border-color: $color-primary;
+    }
   }
 
   &:disabled {
