@@ -1,5 +1,11 @@
-.list {
+.list-wrapper {
   display: flex;
   gap: 16px;
   overflow: hidden;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  transition: transform $animation-duration-picture-slider ease;
 }

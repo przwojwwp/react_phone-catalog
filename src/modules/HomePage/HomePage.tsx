@@ -22,8 +22,9 @@ export const HomePage = () => {
     fetchProducts();
   }, []);
 
-  const brandNewModels = [...products].sort(
-    (a, b) => b.year - a.year || a.price - b.price,
+  const latestYear = Math.max(...products.map(product => product.year));
+  const brandNewModels = [...products].filter(
+    product => product.year === latestYear,
   );
 
   return (
