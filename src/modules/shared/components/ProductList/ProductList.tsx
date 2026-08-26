@@ -14,6 +14,7 @@ export const ProductList = ({
   onVisibleCardsChange,
 }: ProductListProps) => {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const listRef = useRef<HTMLUListElement | null>(null);
 
   const gap = 16;
   const cardWidth = 212;
@@ -26,7 +27,10 @@ export const ProductList = ({
     const observer = new ResizeObserver(entries => {
       const width = entries[0].contentRect.width;
 
-      const visibleCards = Math.max(1, Math.floor(width / (cardWidth + gap)));
+      const visibleCards = Math.max(
+        1,
+        Math.floor((width + gap) / (cardWidth + gap)),
+      );
 
       onVisibleCardsChange(visibleCards);
     });
@@ -38,11 +42,17 @@ export const ProductList = ({
     };
   }, [onVisibleCardsChange]);
 
-  const offset = index * (cardWidth + gap);
+  const wrapperWidth = wrapperRef.current?.offsetWidth || 0;
+  const listWidth = listRef.current?.scrollWidth || 0;
+
+  const maxOffset = Math.max(0, listWidth - wrapperWidth);
+
+  const offset = Math.min(index * (cardWidth + gap), maxOffset);
 
   return (
     <div ref={wrapperRef} className={styles['list-wrapper']}>
       <ul
+        ref={listRef}
         className={styles.list}
         style={{ transform: `translateX(-${offset}px)` }}
       >
