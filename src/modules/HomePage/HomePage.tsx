@@ -34,7 +34,7 @@ export const HomePage = () => {
       <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
       <PicturesSlider />
       <BrandNewModels products={brandNewModels} />
-      <ShopByCategory />
+      <ShopByCategory products={products} />
     </>
   );
 };

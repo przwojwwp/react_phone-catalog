@@ -2,7 +2,17 @@ import { Link } from 'react-router-dom';
 
 import styles from './ShopByCategory.module.scss';
 
-export const ShopByCategory = () => {
+export const ShopByCategory = ({ products }: { products: Product[] }) => {
+  const phoneCount = products.filter(
+    product => product.category === 'phones',
+  ).length;
+  const tabletCount = products.filter(
+    product => product.category === 'tablets',
+  ).length;
+  const accessoryCount = products.filter(
+    product => product.category === 'accessories',
+  ).length;
+
   return (
     <section>
       <header className={styles['section-header']}>
@@ -17,7 +27,7 @@ export const ShopByCategory = () => {
           />
         </Link>
         <h3 className={styles['category-title']}>Phones</h3>
-        <p className={styles['product-count']}>10 products</p>
+        <p className={styles['product-count']}>{phoneCount} products</p>
       </div>
       <div className={styles['category-container']}>
         <Link to="/category">
@@ -28,7 +38,7 @@ export const ShopByCategory = () => {
           />
         </Link>
         <h3 className={styles['category-title']}>Tablets</h3>
-        <p className={styles['product-count']}>10 products</p>
+        <p className={styles['product-count']}>{tabletCount} products</p>
       </div>
       <div className={styles['category-container']}>
         <Link to="/category">
@@ -39,7 +49,7 @@ export const ShopByCategory = () => {
           />
         </Link>
         <h3 className={styles['category-title']}>Accessories</h3>
-        <p className={styles['product-count']}>10 products</p>
+        <p className={styles['product-count']}>{accessoryCount} products</p>
       </div>
     </section>
   );
