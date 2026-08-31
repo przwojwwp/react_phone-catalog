@@ -1,0 +1,20 @@
+.section-header {
+  margin-bottom: 24px;
+}
+
+.category-container {
+  margin: 24px 0 32px;
+}
+
+.category-image {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  margin-bottom: 24px;
+}
+
+.product-count {
+  color: $color-secondary;
+  @include body-text;
+}

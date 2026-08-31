@@ -1,5 +1,6 @@
 import { PicturesSlider } from './components/PicturesSlider';
 import { BrandNewModels } from './components/BrandNewModels/BrandNewModels';
+import { ShopByCategory } from './components/ShopByCategory/ShopByCategory';
 
 import styles from './HomePage.module.scss';
 import { useEffect, useState } from 'react';
@@ -33,6 +34,7 @@ export const HomePage = () => {
       <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
       <PicturesSlider />
       <BrandNewModels products={brandNewModels} />
+      <ShopByCategory />
     </>
   );
 };
