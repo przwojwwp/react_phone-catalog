@@ -4,6 +4,7 @@ import { ShopByCategory } from './components/ShopByCategory/ShopByCategory';
 
 import styles from './HomePage.module.scss';
 import { useEffect, useState } from 'react';
+import { HotPrices } from './components/HotPrices/HotPrices';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -28,6 +29,11 @@ export const HomePage = () => {
     product => product.year === latestYear,
   );
 
+  // prettier-ignore
+  const hotPrices = [...products].sort(
+    (a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price),
+  );
+
   return (
     <>
       <h1 className="visually-hidden">Product Catalog</h1>
@@ -35,6 +41,7 @@ export const HomePage = () => {
       <PicturesSlider />
       <BrandNewModels products={brandNewModels} />
       <ShopByCategory products={products} />
+      <HotPrices products={hotPrices} />
     </>
   );
 };

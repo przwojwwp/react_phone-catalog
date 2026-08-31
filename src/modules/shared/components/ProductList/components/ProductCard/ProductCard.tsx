@@ -2,7 +2,15 @@ import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import HeartIcon from '@/assets/icons/heart.svg?react';
 
-export const ProductCard = ({ product }: { product: Product }) => {
+type ProductCardProps = {
+  product: Product;
+  hotPrice?: boolean;
+};
+
+export const ProductCard = ({
+  product,
+  hotPrice = false,
+}: ProductCardProps) => {
   return (
     <li key={product.id} className={styles.item}>
       <Link to={`/products/${product.itemId}`}>
@@ -14,8 +22,14 @@ export const ProductCard = ({ product }: { product: Product }) => {
       </Link>
       <h3 className={styles.name}>{product.name}</h3>
 
-      <p className={styles.price}>${product.price}</p>
-
+      <div className={styles.prices}>
+        <span className={styles.price}>${product.price}</span>
+        {hotPrice && (
+          <span className={`${styles.price} ${styles['full-price']}`}>
+            ${product.fullPrice}
+          </span>
+        )}
+      </div>
       <hr className={styles.divider} aria-hidden="true" />
 
       <dl className={styles.specs}>
