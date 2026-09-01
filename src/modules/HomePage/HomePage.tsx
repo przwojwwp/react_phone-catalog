@@ -1,9 +1,9 @@
 import { PicturesSlider } from './components/PicturesSlider';
-import { ShopByCategory } from './components/ShopByCategory/ShopByCategory';
+import { ShopByCategory } from './components/ShopByCategory';
 
 import styles from './HomePage.module.scss';
 import { useEffect, useState } from 'react';
-import { ProductSlider } from '../shared/components/ProductSlider/ProductSlider';
+import { ProductSlider } from '../shared/components/ProductSlider';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);

@@ -1,8 +1,8 @@
-import { HomePage } from './modules/HomePage/HomePage';
-import { PhonePage } from './modules/PhonePage/PhonePage';
+import { HomePage } from './modules/HomePage';
+import { PhonePage } from './modules/PhonePage';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { MainLayout } from './modules/Layout/MainLayout';
+import { MainLayout } from './modules/Layout';
 import { NotFoundPage } from './modules/NotFoundPage';
 
 export const App = () => {
