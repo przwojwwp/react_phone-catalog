@@ -1,10 +1,9 @@
 import { PicturesSlider } from './components/PicturesSlider';
-import { BrandNewModels } from './components/BrandNewModels/BrandNewModels';
 import { ShopByCategory } from './components/ShopByCategory/ShopByCategory';
 
 import styles from './HomePage.module.scss';
 import { useEffect, useState } from 'react';
-import { HotPrices } from './components/HotPrices/HotPrices';
+import { ProductSlider } from '../shared/components/ProductSlider/ProductSlider';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -25,6 +24,7 @@ export const HomePage = () => {
   }, []);
 
   const latestYear = Math.max(...products.map(product => product.year));
+
   const brandNewModels = [...products].filter(
     product => product.year === latestYear,
   );
@@ -39,9 +39,16 @@ export const HomePage = () => {
       <h1 className="visually-hidden">Product Catalog</h1>
       <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
       <PicturesSlider />
-      <BrandNewModels products={brandNewModels} />
+      <ProductSlider
+        title={
+          <>
+            Brand New <br /> Models
+          </>
+        }
+        products={brandNewModels}
+      />
       <ShopByCategory products={products} />
-      <HotPrices products={hotPrices} />
+      <ProductSlider title={<>Hot Prices</>} products={hotPrices} hotPrice />
     </>
   );
 };

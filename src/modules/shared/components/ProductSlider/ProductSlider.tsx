@@ -1,10 +1,19 @@
-import { ArrowButton } from '@/modules/shared/components/ArrowButton';
-import { ProductList } from '@/modules/shared/components/ProductList/ProductList';
+import { useEffect, useState } from 'react';
+import { ArrowButton } from '../ArrowButton';
+import { ProductList } from '../ProductList';
+import styles from './ProductSlider.module.scss';
 
-import styles from './HotPrices.module.scss';
-import { useState, useEffect } from 'react';
+type ProductSliderProps = {
+  title: React.ReactNode;
+  products: Product[];
+  hotPrice?: boolean;
+};
 
-export const HotPrices = ({ products }: { products: Product[] }) => {
+export const ProductSlider = ({
+  title,
+  products,
+  hotPrice,
+}: ProductSliderProps) => {
   const [index, setIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(1);
 
@@ -25,7 +34,7 @@ export const HotPrices = ({ products }: { products: Product[] }) => {
   return (
     <section>
       <header className={styles['section-header']}>
-        <h2>Hot prices</h2>
+        <h2>{title}</h2>
 
         <div className={styles.controls}>
           <ArrowButton
@@ -48,7 +57,7 @@ export const HotPrices = ({ products }: { products: Product[] }) => {
         products={products}
         index={index}
         onVisibleCardsChange={setVisibleCards}
-        hotPrice
+        hotPrice={hotPrice}
       />
     </section>
   );
