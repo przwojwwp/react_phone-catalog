@@ -2,6 +2,15 @@
   display: flex;
   gap: 16px;
   overflow: hidden;
+  width: calc(100% + $padding-inline-mobile);
+
+  @include respond(tablet) {
+    width: calc(100% + $padding-inline-tablet);
+  }
+
+  @include respond(desktop) {
+    width: 100%;
+  }
 }
 
 .list {
